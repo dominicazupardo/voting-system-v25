@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auditor;
+use App\Models\BusinessManager;
+use App\Models\PIO;
 use Illuminate\Http\Request;
+use App\Models\President;
+use App\Models\Secretary;
+use App\Models\Treasurer;
+use App\Models\VicePresident;
 
 class HomeController extends Controller
 {
@@ -12,6 +19,19 @@ class HomeController extends Controller
     public function index()
     {
         return view('index');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard', [
+            'presidents' => President::all(),
+            'vice_presidents' => VicePresident::all(),
+            'secretaries' => Secretary::all(),
+            'treasurers' => Treasurer::all(),
+            'pios' => PIO::all(),
+            'business_managers' => BusinessManager::all(),
+            'auditors' => Auditor::all(),
+        ]);
     }
 
     /**

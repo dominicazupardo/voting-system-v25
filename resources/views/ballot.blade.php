@@ -10,7 +10,7 @@
                 <a href="ballot.html" class="hover:underline block">Vote Again</a>
                 <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
                 <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
-                <a href="{{ route('candidates.index') }}" class="hover:underline block">Candidates</a>
+                <a href="{{ route('candidates.index') }}" class="hover:underline block">Registrations</a>
             </nav>
         </div>
 
@@ -22,8 +22,9 @@
                     <label for="president" class="block font-semibold">President</label>
                     <select id="president" name="president" class="w-full p-2 border border-gray-300 rounded">
                         <option value="">-- Select a Candidate --</option>
-                        <option value="candidate1">Candidate 1</option>
-                        <option value="candidate2">Candidate 2</option>
+                        @foreach($presidents as $president)
+                            <option value="{{ $president->name }}">{{ $president->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -31,8 +32,9 @@
                     <label for="vice_president" class="block font-semibold">Vice President</label>
                     <select id="vice_president" name="vice_president" class="w-full p-2 border border-gray-300 rounded">
                         <option value="">-- Select a Candidate --</option>
-                        <option value="candidate1">Candidate 1</option>
-                        <option value="candidate2">Candidate 2</option>
+                        @foreach($vice_presidents as $vice_president)
+                            <option value="{{ $vice_president->name }}">{{ $vice_president->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -40,8 +42,9 @@
                     <label for="secretary" class="block font-semibold">Secretary</label>
                     <select id="secretary" name="secretary" class="w-full p-2 border border-gray-300 rounded">
                         <option value="">-- Select a Candidate --</option>
-                        <option value="candidate1">Candidate 1</option>
-                        <option value="candidate2">Candidate 2</option>
+                        @foreach($secretaries as $secretary)
+                            <option value="{{ $secretary->name }}">{{ $secretary->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -49,8 +52,9 @@
                     <label for="treasurer" class="block font-semibold">Treasurer</label>
                     <select id="treasurer" name="treasurer" class="w-full p-2 border border-gray-300 rounded">
                         <option value="">-- Select a Candidate --</option>
-                        <option value="candidate1">Candidate 1</option>
-                        <option value="candidate2">Candidate 2</option>
+                        @foreach($treasurers as $treasurer)
+                            <option value="{{ $treasurer->name }}">{{ $treasurer->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -58,8 +62,9 @@
                     <label for="pio" class="block font-semibold">P.I.O.</label>
                     <select id="pio" name="pio" class="w-full p-2 border border-gray-300 rounded">
                         <option value="">-- Select a Candidate --</option>
-                        <option value="candidate1">Candidate 1</option>
-                        <option value="candidate2">Candidate 2</option>
+                        @foreach($pios as $pio)
+                            <option value="{{ $pio->name }}">{{ $pio->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -67,8 +72,9 @@
                     <label for="auditor" class="block font-semibold">Auditor</label>
                     <select id="auditor" name="auditor" class="w-full p-2 border border-gray-300 rounded">
                         <option value="">-- Select a Candidate --</option>
-                        <option value="candidate1">Candidate 1</option>
-                        <option value="candidate2">Candidate 2</option>
+                        @foreach($auditors as $auditor)
+                            <option value="{{ $auditor->name }}">{{ $auditor->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -78,8 +84,9 @@
                     <label for="business_manager" class="block font-semibold">Business Manager</label>
                     <select id="business_manager" name="business_manager" class="w-full p-2 border border-gray-300 rounded">
                         <option value="">-- Select a Candidate --</option>
-                        <option value="candidate1">Candidate 1</option>
-                        <option value="candidate2">Candidate 2</option>
+                        @foreach($business_managers as $business_manager)
+                            <option value="{{ $business_manager->name }}">{{ $business_manager->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 

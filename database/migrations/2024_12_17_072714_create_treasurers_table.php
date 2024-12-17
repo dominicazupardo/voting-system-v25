@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('treasurers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('candidate_no');
-            $table->integer('votes');
+            $table->integer('candidate_no');
+            $table->integer('votes')->default(0);
             $table->timestamps();
         });
     }

@@ -20,7 +20,9 @@ class PIOController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidates.pio.create', [
+            'pios' => PIO::all()
+        ]);
     }
 
     /**
@@ -28,7 +30,18 @@ class PIOController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'candidate_no' => 'required|integer|min:1',
+        ]);
+
+        $pio = new PIO();
+        $pio->name = $request->name;
+        $pio->candidate_no = $request->candidate_no;
+        $pio->votes = 0;
+        $pio->save();
+
+        return redirect()->route('pios.create');
     }
 
     /**

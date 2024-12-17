@@ -20,7 +20,9 @@ class PresidentController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidates.president.create', [
+            'presidents' => President::all()
+        ]);
     }
 
     /**
@@ -28,7 +30,18 @@ class PresidentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'candidate_no' => 'required|integer|min:1',
+            ]);
+
+            $president = new President();
+            $president->name = $request->name;
+            $president->candidate_no = $request->candidate_no;
+            $president->votes = 0;
+            $president->save();
+
+            return redirect()->route('presidents.create');
     }
 
     /**

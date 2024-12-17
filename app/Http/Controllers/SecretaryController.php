@@ -20,7 +20,9 @@ class SecretaryController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidates.secretary.create', [
+            'secretaries' => Secretary::all()
+        ]);
     }
 
     /**
@@ -28,7 +30,18 @@ class SecretaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'candidate_no' => 'required|integer|min:1',
+        ]);
+
+        $secretary = new Secretary();
+        $secretary->name = $request->name;
+        $secretary->candidate_no = $request->candidate_no;
+        $secretary->votes = 0;
+        $secretary->save();
+
+        return redirect()->route('secretaries.create');
     }
 
     /**

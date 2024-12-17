@@ -20,7 +20,9 @@ class BusinessManagerController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidates.business_manager.create', [
+            'business_managers' => BusinessManager::all()
+        ]);
     }
 
     /**
@@ -28,7 +30,18 @@ class BusinessManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'candidate_no' => 'required|integer|min:1',
+        ]);
+
+        $business_manager = new BusinessManager();
+        $business_manager->name = $request->name;
+        $business_manager->candidate_no = $request->candidate_no;
+        $business_manager->votes = 0;
+        $business_manager->save();
+
+        return redirect()->route('business_managers.create');
     }
 
     /**

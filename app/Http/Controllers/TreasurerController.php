@@ -20,7 +20,9 @@ class TreasurerController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidates.treasurer.create', [
+            'treasurers' => Treasurer::all()
+        ]);
     }
 
     /**
@@ -28,7 +30,18 @@ class TreasurerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'candidate_no' => 'required|integer|min:1',
+        ]);
+
+        $treasurer = new Treasurer();
+        $treasurer->name = $request->name;
+        $treasurer->candidate_no = $request->candidate_no;
+        $treasurer->votes = 0;
+        $treasurer->save();
+
+        return redirect()->route('treasurers.create');
     }
 
     /**

@@ -20,7 +20,9 @@ class VicePresidentController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidates.vice_president.create', [
+            'vice_presidents' => VicePresident::all()
+        ]);
     }
 
     /**
@@ -28,7 +30,18 @@ class VicePresidentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'candidate_no' => 'required|integer|min:1',
+        ]);
+
+        $vice_president = new VicePresident();
+        $vice_president->name = $request->name;
+        $vice_president->candidate_no = $request->candidate_no;
+        $vice_president->votes = 0;
+        $vice_president->save();
+
+        return redirect()->route('vice_presidents.create');
     }
 
     /**

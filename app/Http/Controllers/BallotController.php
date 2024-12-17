@@ -2,7 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ballot;
+use App\Models\{
+    Ballot,
+    President,
+    VicePresident,
+    Secretary,
+    Treasurer,
+    PIO,
+    BusinessManager,
+    Auditor,
+};
 use Illuminate\Http\Request;
 
 class BallotController extends Controller
@@ -12,7 +21,15 @@ class BallotController extends Controller
      */
     public function index()
     {
-        return view('ballot');
+        return view('ballot', [
+            'presidents' => President::all(),
+            'vice_presidents' => VicePresident::all(),
+            'secretaries' => Secretary::all(),
+            'treasurers' => Treasurer::all(),
+            'pios' => PIO::all(),
+            'business_managers' => BusinessManager::all(),
+            'auditors' => Auditor::all(),
+        ]);
     }
 
     /**

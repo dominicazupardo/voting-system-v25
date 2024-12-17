@@ -3,6 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidate;
+use App\Models\{
+    Auditor,
+    BusinessManager,
+    PIO,
+    President,
+    Secretary,
+    Treasurer,
+    VicePresident
+};
 use Illuminate\Http\Request;
 
 class CandidateController extends Controller
@@ -12,7 +21,15 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        return view('candidate');
+        return view('candidate', [
+            'president_counts' => President::count(),
+            'vice_president_counts' => VicePresident::count(),
+            'secretary_counts' => Secretary::count(),
+            'treasurer_counts' => Treasurer::count(),
+            'pio_counts' => PIO::count(),
+            'business_manager_counts' => BusinessManager::count(),
+            'auditor_counts' => Auditor::count(),
+        ]);
     }
 
     /**

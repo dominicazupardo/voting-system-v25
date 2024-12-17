@@ -10,7 +10,7 @@
                 <a href="ballot.html" class="hover:underline block">Vote Again</a>
                 <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
                 <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
-                <a href="{{ route('candidates.index') }}" class="hover:underline block">Candidates</a>
+                <a href="{{ route('candidates.index') }}" class="hover:underline block">Registrations</a>
             </nav>
         </div>
 
@@ -22,38 +22,38 @@
             </a>
             <form id="ballotForm" onsubmit="return showPreview(event)" class="space-y-6">
                 <div class="space-y-2">
-                    <label for="president" class="block font-semibold">Candidate for President</label>
-                    <a href="">Add Candidate</a> | <a href="">Show List of Candidates</a>
+                    <label for="president" class="block font-semibold">Candidate for President ({{ isset($president_counts) ? $president_counts : 0 }}) </label>
+                    <a href="{{ route('presidents.create') }}">Add Candidate</a>
                 </div>
 
                 <div class="space-y-2">
-                    <label for="vice_president" class="block font-semibold">Candidate for Vice President</label>
-                    <a href="">Add Candidate</a> | <a href="">Show List of Candidates</a>
+                    <label for="vice_president" class="block font-semibold">Candidate for Vice President ({{ isset($vice_president_counts) ? $vice_president_counts : 0 }})</label>
+                    <a href="{{ route('vice_presidents.create') }}">Add Candidate</a>
                 </div>
 
                 <div class="space-y-2">
-                    <label for="secretary" class="block font-semibold">Candidate for Secretary</label>
-                    <a href="">Add Candidate</a> | <a href="">Show List of Candidates</a>
+                    <label for="secretary" class="block font-semibold">Candidate for Secretary ({{ isset($secretary_counts) ? $secretary_counts : 0 }})</label>
+                    <a href="{{ route('secretaries.create') }}">Add Candidate</a>
                 </div>
 
                 <div class="space-y-2">
-                    <label for="treasurer" class="block font-semibold">Candidate for Treasurer</label>
-                    <a href="">Add Candidate</a> | <a href="">Show List of Candidates</a>
+                    <label for="treasurer" class="block font-semibold">Candidate for Treasurer ({{ isset($treasurer_counts) ? $treasurer_counts : 0 }})</label>
+                    <a href="{{ route('treasurers.create') }}">Add Candidate</a>
                 </div>
 
                 <div class="space-y-2">
-                    <label for="pio" class="block font-semibold">Candidate for P.I.O.</label>
-                    <a href="">Add Candidate</a> | <a href="">Show List of Candidates</a>
+                    <label for="pio" class="block font-semibold">Candidate for P.I.O. ({{ isset($pio_counts) ? $pio_counts : 0 }})</label>
+                    <a href="{{ route('pios.create') }}">Add Candidate</a>
                 </div>
 
                 <div class="space-y-2">
-                    <label for="auditor" class="block font-semibold">Candidate for Auditor</label>
-                    <a href="">Add Candidate</a> | <a href="">Show List of Candidates</a>
+                    <label for="auditor" class="block font-semibold">Candidate for Auditor ({{ isset($auditor_counts) ? $auditor_counts : 0 }})</label>
+                    <a href="{{ route('auditors.create') }}">Add Candidate</a>
                 </div>
 
                 <div class="space-y-2">
-                    <label for="business_manager" class="block font-semibold">Candidate for Business Manager</label>
-                    <a href="">Add Candidate</a> | <a href="">Show List of Candidates</a>
+                    <label for="business_manager" class="block font-semibold">Candidate for Business Manager ({{ isset($business_manager_counts) ? $business_manager_counts : 0 }})</label>
+                    <a href="{{ route('business_managers.create') }}">Add Candidate</a>
                 </div>
 
                 <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">
@@ -74,7 +74,7 @@
                     <p><strong>Business Manager:</strong> <span id="preview-business-manager"></span></p>
                 </div>
                 <div class="mt-6 space-x-4">
-                    <button class="bg-green-600 text-white font-semibold py-2 px-4 rounded hover:bg-green-700" onclick="confirmSubmission()">
+                    <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">
                         Confirm Submission
                     </button>
                 </div>

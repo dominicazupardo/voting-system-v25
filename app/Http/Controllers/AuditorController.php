@@ -20,7 +20,9 @@ class AuditorController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidates.auditor.create', [
+            'auditors' => Auditor::all()
+        ]);
     }
 
     /**
@@ -28,7 +30,18 @@ class AuditorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'candidate_no' => 'required|integer|min:1',
+        ]);
+
+        $auditor = new Auditor();
+        $auditor->name = $request->name;
+        $auditor->candidate_no = $request->candidate_no;
+        $auditor->votes = 0;
+        $auditor->save();
+
+        return redirect()->route('auditors.create');
     }
 
     /**

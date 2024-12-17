@@ -10,7 +10,7 @@
                 <a href="ballot.html" class="hover:underline block">Vote Again</a>
                 <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
                 <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
-                <a href="{{ route('candidates.index') }}" class="hover:underline block">Candidates</a>
+                <a href="{{ route('candidates.index') }}" class="hover:underline block">Registrations</a>
             </nav>
         </div>
 
@@ -27,11 +27,89 @@
                         </tr>
                     </thead>
                     <tbody id="results-body">
+                        @forelse($presidents as $president)
                         <tr class="border-b bg-white text-blue-900">
                             <td class="px-6 py-4">President</td>
-                            <td class="px-6 py-4">Jay Millena</td>
-                            <td class="px-6 py-4">7,000,000,0000</td>
+                            <td class="px-6 py-4">{{ $president->name }}</td>
+                            <td class="px-6 py-4">{{ $president->votes }}</td>
                         </tr>
+                        @empty
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4" colspan="3">No Candidate for President</td>
+                        </tr>
+                        @endforelse
+
+                        @forelse($vice_presidents as $vice_president)
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4">Vice President</td>
+                            <td class="px-6 py-4">{{ $vice_president->name }}</td>
+                            <td class="px-6 py-4">{{ $vice_president->votes }}</td>
+                        </tr>
+                        @empty
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4" colspan="3">No Candidate for Vice President</td>
+                        </tr>
+                        @endforelse
+
+                        @forelse($secretaries as $secretary)
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4">Secretary</td>
+                            <td class="px-6 py-4">{{ $secretary->name }}</td>
+                            <td class="px-6 py-4">{{ $secretary->votes }}</td>
+                        </tr>
+                        @empty
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4" colspan="3">No Candidate for Secretary</td>
+                        </tr>
+                        @endforelse
+
+                        @forelse($treasurers as $treasurer)
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4">Treasurer</td>
+                            <td class="px-6 py-4">{{ $treasurer->name }}</td>
+                            <td class="px-6 py-4">{{ $treasurer->votes }}</td>
+                        </tr>
+                        @empty
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4" colspan="3">No Candidate for Treasurer</td>
+                        </tr>
+                        @endforelse
+
+                        @forelse($pios as $pio)
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4">P.I.O</td>
+                            <td class="px-6 py-4">{{ $pio->name }}</td>
+                            <td class="px-6 py-4">{{ $pio->votes }}</td>
+                        </tr>
+                        @empty
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4" colspan="3">No Candidate for P.I.O</td>
+                        </tr>
+                        @endforelse
+
+                        @forelse($business_managers as $business_manager)
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4">Business Manager</td>
+                            <td class="px-6 py-4">{{ $business_manager->name }}</td>
+                            <td class="px-6 py-4">{{ $business_manager->votes }}</td>
+                        </tr>
+                        @empty
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4" colspan="3">No Candidate for Business Manager</td>
+                        </tr>
+                        @endforelse
+
+                        @forelse($auditors as $auditor)
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4">Auditor</td>
+                            <td class="px-6 py-4">{{ $auditor->name }}</td>
+                            <td class="px-6 py-4">{{ $auditor->votes }}</td>
+                        </tr>
+                        @empty
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4" colspan="3">No Candidate for Auditor</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
