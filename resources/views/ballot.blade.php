@@ -1,258 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Official Ballot</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            height: 100vh;
-        }
+<x-app-layout>
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 h-full bg-blue-900 text-white flex flex-col p-6 overflow-y-auto">
+            <a href="{{ route('dashboard') }}" class="mb-8">
+                <h3 class="text-2xl font-bold">Homepage</h3>
+            </a>
+            <p class="mb-6"><strong>Student:</strong> {{ Auth::user()->name }}</p>
+            <nav class="space-y-4">
+                <a href="ballot.html" class="hover:underline block">Vote Again</a>
+                <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
+                <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
+                <a href="{{ route('candidates.index') }}" class="hover:underline block">Candidates</a>
+            </nav>
+        </div>
 
-        .sidebar {
-            width: 250px;
-            background-color: #003399;
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
+        <!-- Content Section -->
+        <div class="flex-grow bg-gradient-to-br bg-white text-blue-900 p-10">
+            <h1 class="text-3xl font-bold mb-6">Official Ballot</h1>
+            <form id="ballotForm" onsubmit="return showPreview(event)" class="space-y-6">
+                <div class="space-y-2">
+                    <label for="president" class="block font-semibold">President</label>
+                    <select id="president" name="president" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        <option value="candidate1">Candidate 1</option>
+                        <option value="candidate2">Candidate 2</option>
+                    </select>
+                </div>
 
-        .sidebar h3 {
-            margin-bottom: 30px;
-        }
+                <div class="space-y-2">
+                    <label for="vice_president" class="block font-semibold">Vice President</label>
+                    <select id="vice_president" name="vice_president" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        <option value="candidate1">Candidate 1</option>
+                        <option value="candidate2">Candidate 2</option>
+                    </select>
+                </div>
 
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            margin: 10px 0;
-        }
+                <div class="space-y-2">
+                    <label for="secretary" class="block font-semibold">Secretary</label>
+                    <select id="secretary" name="secretary" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        <option value="candidate1">Candidate 1</option>
+                        <option value="candidate2">Candidate 2</option>
+                    </select>
+                </div>
 
-        .sidebar a:hover {
-            text-decoration: underline;
-        }
+                <div class="space-y-2">
+                    <label for="treasurer" class="block font-semibold">Treasurer</label>
+                    <select id="treasurer" name="treasurer" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        <option value="candidate1">Candidate 1</option>
+                        <option value="candidate2">Candidate 2</option>
+                    </select>
+                </div>
 
-        .content {
-            flex-grow: 1;
-            padding: 40px;
-            background: linear-gradient(to bottom right, #e0f7ff, #a1caff);
-        }
+                <div class="space-y-2">
+                    <label for="pio" class="block font-semibold">P.I.O.</label>
+                    <select id="pio" name="pio" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        <option value="candidate1">Candidate 1</option>
+                        <option value="candidate2">Candidate 2</option>
+                    </select>
+                </div>
 
-        h1 {
-            margin-bottom: 20px;
-            color: #003399;
-        }
+                <div class="space-y-2">
+                    <label for="auditor" class="block font-semibold">Auditor</label>
+                    <select id="auditor" name="auditor" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        <option value="candidate1">Candidate 1</option>
+                        <option value="candidate2">Candidate 2</option>
+                    </select>
+                </div>
 
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+                <!-- Repeat similar blocks for other positions -->
 
-        form label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
+                <div class="space-y-2">
+                    <label for="business_manager" class="block font-semibold">Business Manager</label>
+                    <select id="business_manager" name="business_manager" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        <option value="candidate1">Candidate 1</option>
+                        <option value="candidate2">Candidate 2</option>
+                    </select>
+                </div>
 
-        form select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+                <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">
+                    Preview Your Choices
+                </button>
+            </form>
 
-        .submit-btn {
-            background-color: orange;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .submit-btn:hover {
-            background-color: #cc6600;
-        }
-
-        .confirmation {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .confirmation p {
-            font-size: 16px;
-        }
-
-        .confirmation button {
-            background-color: green;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .confirmation button:hover {
-            background-color: #008000;
-        }
-
-        .go-back-btn {
-            background-color: red;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .go-back-btn:hover {
-            background-color: #b22222;
-        }
-
-        .cancel-btn {
-            background-color: gray;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .cancel-btn:hover {
-            background-color: #666;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="hyas.html">
-        <h3>Homepage</h3></a>
-        <p><strong>Student:</strong> Student 1</p>
-        <a href="#candidates">Candidates</a>
-        <a href="#results">Results</a>
-        <a href="#logout">Log Out</a>
-    </div>
-
-    <!-- Content Section -->
-    <div class="content">
-        <h1>Official Ballot</h1>
-        <form id="ballotForm" onsubmit="return showPreview(event)">
-            <label for="president">President</label>
-            <select id="president" name="president">
-                <option value="">-- Select a Candidate --</option>
-                <option value="candidate1">Candidate 1</option>
-                <option value="candidate2">Candidate 2</option>
-            </select>
-
-            <label for="vp">Vice President</label>
-            <select id="vp" name="vp">
-                <option value="">-- Select a Candidate --</option>
-                <option value="candidate1">Candidate 1</option>
-                <option value="candidate2">Candidate 2</option>
-            </select>
-
-            <label for="secretary">Secretary</label>
-            <select id="secretary" name="secretary">
-                <option value="">-- Select a Candidate --</option>
-                <option value="candidate1">Candidate 1</option>
-                <option value="candidate2">Candidate 2</option>
-            </select>
-
-            <label for="treasurer">Treasurer</label>
-            <select id="treasurer" name="treasurer">
-                <option value="">-- Select a Candidate --</option>
-                <option value="candidate1">Candidate 1</option>
-                <option value="candidate2">Candidate 2</option>
-            </select>
-
-            <label for="pio">P.I.O</label>
-            <select id="pio" name="pio">
-                <option value="">-- Select a Candidate --</option>
-                <option value="candidate1">Candidate 1</option>
-                <option value="candidate2">Candidate 2</option>
-            </select>
-
-            <label for="auditor">Auditor</label>
-            <select id="auditor" name="auditor">
-                <option value="">-- Select a Candidate --</option>
-                <option value="candidate1">Candidate 1</option>
-                <option value="candidate2">Candidate 2</option>
-            </select>
-
-            <label for="business-manager">Business Manager</label>
-            <select id="business-manager" name="business-manager">
-                <option value="">-- Select a Candidate --</option>
-                <option value="candidate1">Candidate 1</option>
-                <option value="candidate2">Candidate 2</option>
-            </select>
-
-            <button type="submit" class="submit-btn">Preview Your Choices</button>
-        </form>
-
-        <!-- Confirmation Section (hidden by default) -->
-        <div id="confirmation" class="confirmation" style="display: none;">
-            <h2>Your Selections</h2>
-            <p><strong>President:</strong> <span id="preview-president"></span></p>
-            <p><strong>Vice President:</strong> <span id="preview-vp"></span></p>
-            <p><strong>Secretary:</strong> <span id="preview-secretary"></span></p>
-            <p><strong>Treasurer:</strong> <span id="preview-treasurer"></span></p>
-            <p><strong>P.I.O:</strong> <span id="preview-pio"></span></p>
-            <p><strong>Auditor:</strong> <span id="preview-auditor"></span></p>
-            <p><strong>Business Manager:</strong> <span id="preview-business-manager"></span></p>
-            <button class="submit-btn" onclick="confirmSubmission()">Confirm Submission</button>
-            <button class="go-back-btn" onclick="goBackToBallot()">Go Back to Ballot</button>
+            <!-- Confirmation Section -->
+            <div id="confirmation" class="mt-10 hidden">
+                <h2 class="text-2xl font-bold mb-6">Your Selections</h2>
+                <div class="space-y-4">
+                    <p><strong>President:</strong> <span id="preview-president"></span></p>
+                    <p><strong>Vice President:</strong> <span id="preview-vp"></span></p>
+                    <p><strong>Secretary:</strong> <span id="preview-secretary"></span></p>
+                    <p><strong>Treasurer:</strong> <span id="preview-treasurer"></span></p>
+                    <p><strong>P.I.O:</strong> <span id="preview-pio"></span></p>
+                    <p><strong>Auditor:</strong> <span id="preview-auditor"></span></p>
+                    <p><strong>Business Manager:</strong> <span id="preview-business-manager"></span></p>
+                </div>
+                <div class="mt-6 space-x-4">
+                    <button class="bg-green-600 text-white font-semibold py-2 px-4 rounded hover:bg-green-700" onclick="confirmSubmission()">
+                        Confirm Submission
+                    </button>
+                    <a href="{{ route('dashboard') }}">
+                        <button type="button" class="bg-gray-600 text-white font-semibold py-2 px-4 rounded hover:bg-gray-700">
+                            Go Back to Candidates
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-
-    <script>
-        function showPreview(event) {
-            event.preventDefault();  // Prevent form submission
-            
-            // Get values from the form
-            const president = document.getElementById("president").value;
-            const vp = document.getElementById("vp").value;
-            const secretary = document.getElementById("secretary").value;
-            const treasurer = document.getElementById("treasurer").value;
-            const pio = document.getElementById("pio").value;
-            const auditor = document.getElementById("auditor").value;
-            const businessManager = document.getElementById("business-manager").value;
-            
-            // Show the preview
-            document.getElementById("preview-president").innerText = president || "No selection";
-            document.getElementById("preview-vp").innerText = vp || "No selection";
-            document.getElementById("preview-secretary").innerText = secretary || "No selection";
-            document.getElementById("preview-treasurer").innerText = treasurer || "No selection";
-            document.getElementById("preview-pio").innerText = pio || "No selection";
-            document.getElementById("preview-auditor").innerText = auditor || "No selection";
-            document.getElementById("preview-business-manager").innerText = businessManager || "No selection";
-            
-            // Hide the form and show the confirmation
-            document.querySelector("form").style.display = "none";
-            document.getElementById("confirmation").style.display = "block";
-        }
-
-        function confirmSubmission() {
-            alert("Your vote has been successfully submitted!");
-            // Redirect to the results or confirmation page
-            window.location.href = "resu.html";  // Replace with the actual redirect page
-        }
-
-        function goBackToBallot() {
-            document.querySelector("form").style.display = "block";
-            document.getElementById("confirmation").style.display = "none";
-        }
-    </script>
-
-</body>
-</html>
+</x-app-layout>

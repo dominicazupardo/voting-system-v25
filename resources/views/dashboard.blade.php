@@ -2,11 +2,16 @@
     <div class="flex h-screen">
         <!-- Sidebar -->
         <div class="w-64 bg-blue-900 text-white flex flex-col p-6">
-            <a href="{{ route('home.index') }}" class="mb-8">
+            <a href="{{ route('dashboard') }}" class="mb-8">
                 <h3 class="text-2xl font-bold">Homepage</h3>
             </a>
-            <p class="mb-6"><strong>Student:</strong> Student 1</p>
-            <a href="ballot.html" class="hover:underline">Vote Again</a>
+            <p class="mb-6"><strong>Student:</strong> {{ Auth::user()->name }}</p>
+            <nav class="space-y-4">
+                <a href="ballot.html" class="hover:underline block">Vote Again</a>
+                <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
+                <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
+                <a href="{{ route('candidates.index') }}" class="hover:underline block">Candidates</a>
+            </nav>
         </div>
 
         <!-- Content Section -->
@@ -30,12 +35,11 @@
                     </tbody>
                 </table>
             </div>
-            <button
-                class="mt-6 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded"
-                onclick="goToBallot()"
-            >
-                Go Back to Ballot
-            </button>
+            <a href="{{ route('ballots.index') }}">
+                <button class="mt-6 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded">
+                    Go Back to Ballot
+                </button>
+            </a>
         </div>
     </div>
 </x-app-layout>
