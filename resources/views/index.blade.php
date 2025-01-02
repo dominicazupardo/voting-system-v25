@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
         <!-- Styles / Scripts -->
-        @vite('resources/css/app.css')
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body style="margin: 0; font-family: Arial, sans-serif;">
 
