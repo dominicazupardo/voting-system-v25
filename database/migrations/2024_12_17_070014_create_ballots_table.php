@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('ballots', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_no')->constrained('users');
+            $table->string('president');
+            $table->string('vice_president');
+            $table->string('secretary');
+            $table->string('treasurer');
+            $table->string('pio');
+            $table->string('auditor');
+            $table->string('business_manager');
             $table->timestamps();
         });
     }

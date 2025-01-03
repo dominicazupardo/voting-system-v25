@@ -16,6 +16,11 @@ use Illuminate\Http\Request;
 
 class BallotController extends Controller
 {
+    public function preview(Request $request)
+    {
+        
+    } 
+
     /**
      * Display a listing of the resource.
      */
@@ -45,15 +50,16 @@ class BallotController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Ballot $ballot)
+
+    public function show(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

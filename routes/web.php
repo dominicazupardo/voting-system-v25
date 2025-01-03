@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/ballots', BallotController::class);
+    Route::resource('/ballots/previewvote', [BallotController::class, 'preview'])->name('ballot.preview');
     Route::resource('/candidates', CandidateController::class);
     Route::resource('/presidents', PresidentController::class);
     Route::resource('/vice_presidents', VicePresidentController::class);

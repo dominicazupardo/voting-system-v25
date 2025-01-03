@@ -17,7 +17,8 @@
         <!-- Content Section -->
         <div class="flex-grow bg-gradient-to-br bg-white text-blue-900 p-10">
             <h1 class="text-3xl font-bold mb-6">Official Ballot</h1>
-            <form id="ballotForm" onsubmit="return showPreview(event)" class="space-y-6">
+            <form id="ballotForm" action="{{ route('ballot.preview') }}" method="get">
+                @csrf
                 <div class="space-y-2">
                     <label for="president" class="block font-semibold">President</label>
                     <select id="president" name="president" class="w-full p-2 border border-gray-300 rounded">
