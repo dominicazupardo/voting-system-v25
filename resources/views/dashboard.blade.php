@@ -7,7 +7,6 @@
             </a>
             <p class="mb-6"><strong>Student:</strong> {{ Auth::user()->name }}</p>
             <nav class="space-y-4">
-                <a href="ballot.html" class="hover:underline block">Vote Again</a>
                 <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
                 <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
                 <a href="{{ route('candidates.index') }}" class="hover:underline block">Registrations</a>
@@ -31,7 +30,9 @@
                         <tr class="border-b bg-white text-blue-900">
                             <td class="px-6 py-4">President</td>
                             <td class="px-6 py-4">{{ $president->name }}</td>
-                            <td class="px-6 py-4">{{ $president->votes }}</td>
+                            <td class="px-6 py-4">
+
+                            </td>
                         </tr>
                         @empty
                         <tr class="border-b bg-white text-blue-900">
@@ -87,6 +88,18 @@
                         </tr>
                         @endforelse
 
+                        @forelse($peace_officers as $peace_officer)
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4">Peace Officer</td>
+                            <td class="px-6 py-4">{{ $peace_officer->name }}</td>
+                            <td class="px-6 py-4">{{ $peace_officer->votes }}</td>
+                        </tr>
+                        @empty
+                        <tr class="border-b bg-white text-blue-900">
+                            <td class="px-6 py-4" colspan="3">No Candidate for P.I.O</td>
+                        </tr>
+                        @endforelse
+
                         @forelse($business_managers as $business_manager)
                         <tr class="border-b bg-white text-blue-900">
                             <td class="px-6 py-4">Business Manager</td>
@@ -113,7 +126,7 @@
                     </tbody>
                 </table>
             </div>
-            <a href="{{ route('ballots.index') }}">
+            <a href="{{ route('ballots.index') }}" class="mt-2">
                 <button class="mt-6 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded">
                     Go Back to Ballot
                 </button>

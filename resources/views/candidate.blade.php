@@ -7,7 +7,6 @@
             </a>
             <p class="mb-6"><strong>Student:</strong> {{ Auth::user()->name }}</p>
             <nav class="space-y-4">
-                <a href="ballot.html" class="hover:underline block">Vote Again</a>
                 <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
                 <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
                 <a href="{{ route('candidates.index') }}" class="hover:underline block">Registrations</a>
@@ -47,6 +46,11 @@
                 </div>
 
                 <div class="space-y-2">
+                    <label for="pio" class="block font-semibold">Candidate for Peace Officer ({{ isset($peace_officer_counts) ? $peace_officer_counts : 0 }})</label>
+                    <a href="{{ route('peace_officers.create') }}">Add Candidate</a>
+                </div>
+
+                <div class="space-y-2">
                     <label for="auditor" class="block font-semibold">Candidate for Auditor ({{ isset($auditor_counts) ? $auditor_counts : 0 }})</label>
                     <a href="{{ route('auditors.create') }}">Add Candidate</a>
                 </div>
@@ -55,10 +59,6 @@
                     <label for="business_manager" class="block font-semibold">Candidate for Business Manager ({{ isset($business_manager_counts) ? $business_manager_counts : 0 }})</label>
                     <a href="{{ route('business_managers.create') }}">Add Candidate</a>
                 </div>
-
-                <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">
-                    Preview Your Choices
-                </button>
             </form>
 
             <!-- Confirmation Section -->

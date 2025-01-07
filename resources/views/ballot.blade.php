@@ -7,7 +7,6 @@
             </a>
             <p class="mb-6"><strong>Student:</strong> {{ Auth::user()->name }}</p>
             <nav class="space-y-4">
-                <a href="ballot.html" class="hover:underline block">Vote Again</a>
                 <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
                 <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
                 <a href="{{ route('candidates.index') }}" class="hover:underline block">Registrations</a>
@@ -17,7 +16,7 @@
         <!-- Content Section -->
         <div class="flex-grow bg-gradient-to-br bg-white text-blue-900 p-10">
             <h1 class="text-3xl font-bold mb-6">Official Ballot</h1>
-            <form id="ballotForm" action="{{ route('ballot.preview') }}" method="get">
+            <form id="ballotForm" action="{{ route('ballot.preview') }}" method="POST">
                 @csrf
                 <div class="space-y-2">
                     <label for="president" class="block font-semibold">President</label>
@@ -70,6 +69,26 @@
                 </div>
 
                 <div class="space-y-2">
+                    <label for="peace_officer_1" class="block font-semibold">Peace Officer 1</label>
+                    <select id="peace_officer_1" name="peace_officer_1" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        @foreach($peace_officers as $peace_officer)
+                            <option value="{{ $peace_officer->name }}">{{ $peace_officer->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="peace_officer_2" class="block font-semibold">Peace Officer 2</label>
+                    <select id="peace_officer_2" name="peace_officer_2" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        @foreach($peace_officers as $peace_officer)
+                            <option value="{{ $peace_officer->name }}">{{ $peace_officer->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="space-y-2">
                     <label for="auditor" class="block font-semibold">Auditor</label>
                     <select id="auditor" name="auditor" class="w-full p-2 border border-gray-300 rounded">
                         <option value="">-- Select a Candidate --</option>
@@ -82,8 +101,8 @@
                 <!-- Repeat similar blocks for other positions -->
 
                 <div class="space-y-2">
-                    <label for="business_manager" class="block font-semibold">Business Manager</label>
-                    <select id="business_manager" name="business_manager" class="w-full p-2 border border-gray-300 rounded">
+                    <label for="business_manager_1" class="block font-semibold">Business Manager 1</label>
+                    <select id="business_manager_1" name="business_manager_1" class="w-full p-2 border border-gray-300 rounded">
                         <option value="">-- Select a Candidate --</option>
                         @foreach($business_managers as $business_manager)
                             <option value="{{ $business_manager->name }}">{{ $business_manager->name }}</option>
@@ -91,7 +110,17 @@
                     </select>
                 </div>
 
-                <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">
+                <div class="space-y-2">
+                    <label for="business_manager_2" class="block font-semibold">Business Manager 2</label>
+                    <select id="business_manager_2" name="business_manager_2" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        @foreach($business_managers as $business_manager)
+                            <option value="{{ $business_manager->name }}">{{ $business_manager->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 mt-2">
                     Preview Your Choices
                 </button>
             </form>

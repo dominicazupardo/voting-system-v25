@@ -6,6 +6,7 @@ use App\Models\Candidate;
 use App\Models\{
     Auditor,
     BusinessManager,
+    PeaceOfficer,
     PIO,
     President,
     Secretary,
@@ -29,6 +30,7 @@ class CandidateController extends Controller
             'pio_counts' => PIO::count(),
             'business_manager_counts' => BusinessManager::count(),
             'auditor_counts' => Auditor::count(),
+            'peace_officer_counts' => PeaceOfficer::count(),
         ]);
     }
 

@@ -28,6 +28,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected function ballot()
+    {
+        $this->hasOne(Ballot::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
