@@ -7,7 +7,6 @@
             </a>
             <p class="mb-6"><strong>Student:</strong> {{ Auth::user()->name }}</p>
             <nav class="space-y-4">
-                <a href="ballot.html" class="hover:underline block">Vote Again</a>
                 <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
                 <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
                 <a href="{{ route('candidates.index') }}" class="hover:underline block">Registrations</a>

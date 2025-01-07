@@ -30,9 +30,7 @@
                         <tr class="border-b bg-white text-blue-900">
                             <td class="px-6 py-4">President</td>
                             <td class="px-6 py-4">{{ $president->name }}</td>
-                            <td class="px-6 py-4">
-
-                            </td>
+                            <td class="px-6 py-4">{{ $president->votes }}</td>
                         </tr>
                         @empty
                         <tr class="border-b bg-white text-blue-900">

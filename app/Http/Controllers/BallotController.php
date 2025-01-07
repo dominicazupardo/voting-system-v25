@@ -55,10 +55,10 @@ class BallotController extends Controller
         $peace_officer->votes++;
         $ballot->business_manager = $request->business_manager_1;
         $business_manager = BusinessManager::where('name', '=', $request->business_manager_1)->get();
-        $vice_president->votes++;
+        $business_manager->votes++;
         $ballot->business_manager = $request->business_manager_2;
         $business_manager = BusinessManager::where('name', '=', $request->business_manager_2)->get();
-        $vice_president->votes++;
+        $business_manager->votes++;
         $ballot->user_id = Auth::user()->id;
 
         $ballot->save();
