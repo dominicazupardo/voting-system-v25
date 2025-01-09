@@ -41,7 +41,7 @@ class PeaceOfficerController extends Controller
             $peace_officer->votes = 0;
             $peace_officer->save();
 
-            return redirect()->route('presidents.create');
+            return redirect()->route('peace_officers.create');
     }
 
     /**
