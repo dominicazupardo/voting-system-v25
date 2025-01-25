@@ -5,7 +5,7 @@
             <a href="{{ route('dashboard') }}" class="mb-8">
                 <h3 class="text-2xl font-bold">Homepage</h3>
             </a>
-            <p class="mb-6"><strong>Student:</strong> {{ Auth::user()->name }}</p>
+            <p class="mb-6">{{ sprintf('%s, %s %s',  strtoupper(Auth::user()->lastname), Auth::user()->firstname, Auth::user()->middlename) }}</p>
             <nav class="space-y-4">
                 <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
                 <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
@@ -57,6 +57,16 @@
                         @endforeach
                     </select>
                 </div>
+                
+                <div class="space-y-2">
+                    <label for="auditor" class="block font-semibold">Auditor</label>
+                    <select id="auditor" name="auditor" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        @foreach($auditors as $auditor)
+                            <option value="{{ $auditor->name }}">{{ $auditor->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
                 <div class="space-y-2">
                     <label for="pio" class="block font-semibold">P.I.O.</label>
@@ -64,36 +74,6 @@
                         <option value="">-- Select a Candidate --</option>
                         @foreach($pios as $pio)
                             <option value="{{ $pio->name }}">{{ $pio->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label for="peace_officer_1" class="block font-semibold">Peace Officer 1</label>
-                    <select id="peace_officer_1" name="peace_officer_1" class="w-full p-2 border border-gray-300 rounded">
-                        <option value="">-- Select a Candidate --</option>
-                        @foreach($peace_officers as $peace_officer)
-                            <option value="{{ $peace_officer->name }}">{{ $peace_officer->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label for="peace_officer_2" class="block font-semibold">Peace Officer 2</label>
-                    <select id="peace_officer_2" name="peace_officer_2" class="w-full p-2 border border-gray-300 rounded">
-                        <option value="">-- Select a Candidate --</option>
-                        @foreach($peace_officers as $peace_officer)
-                            <option value="{{ $peace_officer->name }}">{{ $peace_officer->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="space-y-2">
-                    <label for="auditor" class="block font-semibold">Auditor</label>
-                    <select id="auditor" name="auditor" class="w-full p-2 border border-gray-300 rounded">
-                        <option value="">-- Select a Candidate --</option>
-                        @foreach($auditors as $auditor)
-                            <option value="{{ $auditor->name }}">{{ $auditor->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -120,6 +100,26 @@
                     </select>
                 </div>
 
+                <div class="space-y-2">
+                    <label for="peace_officer_1" class="block font-semibold">Peace Officer 1</label>
+                    <select id="peace_officer_1" name="peace_officer_1" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        @foreach($peace_officers as $peace_officer)
+                            <option value="{{ $peace_officer->name }}">{{ $peace_officer->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="peace_officer_2" class="block font-semibold">Peace Officer 2</label>
+                    <select id="peace_officer_2" name="peace_officer_2" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="">-- Select a Candidate --</option>
+                        @foreach($peace_officers as $peace_officer)
+                            <option value="{{ $peace_officer->name }}">{{ $peace_officer->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                
                 <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 mt-2">
                     Preview Your Choices
                 </button>

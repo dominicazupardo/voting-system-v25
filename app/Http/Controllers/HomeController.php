@@ -14,7 +14,7 @@ use App\Models\{
     BusinessManager,
     PeaceOfficer,
     PIO,
-    Ballot,
+    Course,
 };
 
 class HomeController extends Controller
@@ -24,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        return view('index', [
+            'courses' => Course::all() 
+        ]);
     }
 
     public function dashboard()

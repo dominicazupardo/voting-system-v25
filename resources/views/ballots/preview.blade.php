@@ -6,7 +6,7 @@
               <h3 class="text-2xl font-bold">Homepage</h3>
           </a>
           <p class="mb-6"><strong>Student:</strong> {{ Auth::user()->name }}</p>
-          <nav class="space-y-4">
+          <nav class="space-y-4"> 
               <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
               <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
               <a href="{{ route('candidates.index') }}" class="hover:underline block">Registrations</a>
@@ -49,16 +49,6 @@
                 <input type="hidden" name="pio" value="{{ $ballots->pio }}" />
               </div>
               <div class="flex items-center space-x-2">
-                <label for="peace_officer_1" class="block font-semibold">Peace Officer 1: </label>
-                <span>{{ isset($ballots->peace_officer_1) ? $ballots->peace_officer_1 : 'No selected candidate' }}</span>
-                <input type="hidden" name="peace_officer_1" value="{{ $ballots->peace_officer_1 }}" />
-              </div>
-              <div class="flex items-center space-x-2">
-                <label for="peace_officer_2" class="block font-semibold">Peace Officer 2: </label>
-                <span>{{ isset($ballots->peace_officer_2) ? $ballots->peace_officer_2 : 'No selected candidate' }}</span>
-                <input type="hidden" name="peace_officer_2" value="{{ $ballots->peace_officer_2 }}" />
-              </div>
-              <div class="flex items-center space-x-2">
                 <label for="business_manager_1" class="block font-semibold">Business Manager 1: </label>
                 <span>{{ isset($ballots->business_manager_1) ? $ballots->business_manager_1 : 'No selected candidate' }}</span>
                 <input type="hidden" name="business_manager_1" value="{{ $ballots->business_manager_1 }}" />
@@ -68,7 +58,16 @@
                 <span>{{ isset($ballots->business_manager_2) ? $ballots->business_manager_2 : 'No selected candidate' }}</span>
                 <input type="hidden" name="business_manager_2" value="{{ $ballots->business_manager_2 }}" />
               </div>              
-
+              <div class="flex items-center space-x-2">
+                <label for="peace_officer_1" class="block font-semibold">Peace Officer 1: </label>
+                <span>{{ isset($ballots->peace_officer_1) ? $ballots->peace_officer_1 : 'No selected candidate' }}</span>
+                <input type="hidden" name="peace_officer_1" value="{{ $ballots->peace_officer_1 }}" />
+              </div>
+              <div class="flex items-center space-x-2">
+                <label for="peace_officer_2" class="block font-semibold">Peace Officer 2: </label>
+                <span>{{ isset($ballots->peace_officer_2) ? $ballots->peace_officer_2 : 'No selected candidate' }}</span>
+                <input type="hidden" name="peace_officer_2" value="{{ $ballots->peace_officer_2 }}" />
+              </div>
               <div class="flex items-center space-x-2 gap-2 mt-2">
                 <button type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">
                     Cast the Votes

@@ -17,7 +17,7 @@
     <body style="margin: 0; font-family: Arial, sans-serif;">
 
         <!-- Background and Header Section -->
-        <div style="background: linear-gradient(to right, rgba(6, 6, 195, 0.762), rgba(0, 26, 255, 0.3)), url('https://scontent.fmnl8-4.fna.fbcdn.net/v/t39.30808-6/468527189_544181965097454_8024350015574709989_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEkPULJsFpb32fznDQHKyUsSiphzcSX-utKKmHNxJf668J-OhSv5qqtHebHHcpDF9HMFPsB4R-3js_AC9e4-_T9&_nc_ohc=5s4AMRgkI24Q7kNvgH6v2nd&_nc_zt=23&_nc_ht=scontent.fmnl8-4.fna&_nc_gid=ASAZxgfLz6WkAIo_OlVPLw5&oh=00_AYBf62z8ksfP8GuzKCQgi1W7Cdy11YalB3KbY9iZTmJPBQ&oe=676199C4');
+        <div style="background: linear-gradient(to right, rgba(6, 6, 195, 0.762), rgba(0, 26, 255, 0.3)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYCOOhlUfb6E1sldsTgZYz6Jjpbpo1-BRN9A&s');
             background-size: cover; background-position: center; height: 100vh; color: rgb(255, 255, 255); text-align: center; position: relative;">
 
             <!-- Navigation Bar -->
@@ -50,13 +50,13 @@
                 <p style="font-size: 16px; margin-bottom: 10px;">Powered by:</p>
                 <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
                     <a href="https://web.facebook.com/profile.php?id=61551949402367" target="_blank">
-                        <img src="https://scontent.fmnl13-4.fna.fbcdn.net/v/t39.30808-6/458099102_122156784806064980_4437962314495810010_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEMo6agaYJfA_SPMYxyC0e27kSU1vIAFMzuRJTW8gAUzIa5YMpYvDvfS9xqTKOlyY7wrGM0AtQZM9V5-YBapSzK&_nc_ohc=xkUtSUx7JqMQ7kNvgHWX867&_nc_zt=23&_nc_ht=scontent.fmnl13-4.fna&_nc_gid=A5awhxHHDBbfqw-FCcZg-Nk&oh=00_AYBj0Jgm9ffkaK-ro46wA50V8HnRoqys7SA8u54zKF0QlQ&oe=675DD7F8" alt="Conexion Logo" style="width: 60px; height: 60px;">
+                        <img src="https://scontent.fmnl13-4.fna.fbcdn.net/v/t39.30808-6/458099102_122156784806064980_4437962314495810010_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEMo6agaYJfA_SPMYxyC0e27kSU1vIAFMzuRJTW8gAUzIa5YMpYvDvfS9xqTKOlyY7wrGM0AtQZM9V5-YBapSzK&_nc_ohc=2fVilWAuC2MQ7kNvgELO-L7&_nc_zt=23&_nc_ht=scontent.fmnl13-4.fna&_nc_gid=AcyMgjnKvSQQTGAxzUADCar&oh=00_AYCUJD9fHbJ8kh9xcR6ZG5HfXfuzYphymw2KUoXfhXEnnw&oe=678BC438" alt="Conexion Logo" style="width: 60px; height: 60px;">
                     </a>
                     <a href="https://web.facebook.com/ccdi.legazpi.2024" target="_blank">
-                        <img src="https://scontent.fmnl13-1.fna.fbcdn.net/v/t39.30808-6/243255170_265459408918538_8416479987918411411_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEitRWmBHjmjH41vtpkdsEu3vgmTtoM8vHe-CZO2gzy8e7u1qV1z0zdJ8wvVeZNu5FNJC1eWQAGfPPORl4JhjYo&_nc_ohc=HfBSo-7iP6cQ7kNvgHYsId8&_nc_zt=23&_nc_ht=scontent.fmnl13-1.fna&_nc_gid=AgFzeeO4iFH1yRL2c4v1Aug&oh=00_AYAcwmmZEIpRcDZZJFJEYhbke4KgDykgKzF3pjo0IJ_2fA&oe=675DAFF7" alt="CCDI Logo" style="width: 60px; height: 60px;">
+                        <img src="https://scontent.fmnl13-1.fna.fbcdn.net/v/t39.30808-6/243255170_265459408918538_8416479987918411411_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEitRWmBHjmjH41vtpkdsEu3vgmTtoM8vHe-CZO2gzy8e7u1qV1z0zdJ8wvVeZNu5FNJC1eWQAGfPPORl4JhjYo&_nc_ohc=9BstICA_-8sQ7kNvgFpty9Y&_nc_zt=23&_nc_ht=scontent.fmnl13-1.fna&_nc_gid=AKfD_hIJTlhVZa09tQoH8aV&oh=00_AYC_As_S83dRPBwJnRRq66OEFs4VC9LEWKuLU5O6ncf3lw&oe=678BD477" alt="CCDI Logo" style="width: 60px; height: 60px;">
                     </a>
                     <a href="https://web.facebook.com/profile.php?id=61550942620217" target="_blank">
-                        <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/378954738_122108915558031420_5720355415518902872_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGiCD4vCqVaVa4llyEgSVBTAgOyAj9ep00CA7ICP16nTRotxeyHJzA3jR9KLwyXUcSCyTsvbh5Uyhk19PJyd888&_nc_ohc=zN-U0mXU1EgQ7kNvgH_CH8n&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=A3O8XkEvSnBMGS7iwtk4T7C&oh=00_AYA14aybBQMBk0F9iX0eThTHkzEN3_ERjfu9ud7LlEODtg&oe=675DD6A3" alt="Third Logo" style="width: 60px; height: 60px;">
+                        <img src="https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-6/378954738_122108915558031420_5720355415518902872_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGiCD4vCqVaVa4llyEgSVBTAgOyAj9ep00CA7ICP16nTRotxeyHJzA3jR9KLwyXUcSCyTsvbh5Uyhk19PJyd888&_nc_ohc=i-_uc3X_Qc4Q7kNvgFRGTHY&_nc_zt=23&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=Ay-_8ULnVuPhi2NJ6g8YZY4&oh=00_AYAG9cN-SJYd3_g82cyLVRbUgXZzFBLZlRw7wEZQv_fiaA&oe=678BC2E3" alt="Third Logo" style="width: 60px; height: 60px;">
                     </a>
                 </div>
                 <p style="margin-top: 20px; font-size: 14px;">est 2024</p>
@@ -81,31 +81,73 @@
             </div>
         </div>
 
-        <!-- Registration Form -->
-        <div id="registerForm" class="overlay">
-            <div class="form-container">
-                <form action="{{ route('register') }}" method="POST">
-                @csrf
-                    <h2>Register</h2>
-                    <input name="student_no" type="text"  :value="old('student_no')" required autofocus autocomplete="student_no" placeholder="Student ID Number">
-                    <x-input-error :messages="$errors->get('student_no')" class="mt-2" />
-                    <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Name" />
-                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                    <input id="course" type="text" name="course" :value="old('course')" required autofocus autocomplete="course" placeholder="Course" />
-                    <input id="mobile_no" type="text" name="mobile_no" :value="old('mobile_no')" required autofocus autocomplete="mobile_no" placeholder="Mobile no" />
-                    <x-input-error :messages="$errors->get('course')" class="mt-2" />
-                    <input id="email" type="text" name="email" :value="old('email')" required autofocus autocomplete="email" placeholder="Email" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                    <input id="new-password" type="password" name="password" required autocomplete="new-password" placeholder="Password"/>
-                    <x-input-error :messages="$errors->get('new-password')" class="mt-2" />
-                    <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password"/>
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+       <!-- Registration Form -->
+        <div id="registerForm" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.7); z-index: 1000;">
+            <div class="form-container" style="background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); width: 400px; max-width: 90%;">
+                <form action="{{ route('register') }}" method="POST" style="display: flex; flex-direction: column; gap: 5px;">
+                    @csrf
+                    <h2 style="text-align: center; margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 30px; color: #333;">Student Registration</h2>
 
-                    <button>Register</button>
-                    <button class="close-btn" onclick="closeForms()">Close</button>
+                    <!-- Student ID -->
+                    <div class="form-group">
+                        <input name="student_no" type="text" :value="old('student_no')" required autofocus autocomplete="student_no" placeholder="Student ID Number" 
+                            style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                    </div>
+
+                    <!-- Name Fields -->
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 10px;">
+                        <input id="firstname" type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="given-name" placeholder="First Name" 
+                            style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        <input id="middlename" type="text" name="middlename" :value="old('middlename')" autocomplete="additional-name" placeholder="Middle Name" 
+                            style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        <input id="lastname" type="text" name="lastname" :value="old('lastname')" required autocomplete="family-name" placeholder="Last Name" 
+                            style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                    </div>
+
+                    <!-- Course -->
+                    <div class="form-group">
+                        <select id="course" name="course" required autofocus  
+                                style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none; background-color: #fff;">
+                            <option value="" disabled selected>Select Course</option>
+                            @foreach($courses as $course)
+                                <option value="{{ $course->course }}">{{ $course->course }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <!-- Mobile No -->
+                    <div class="form-group">
+                        <input id="mobile_no" type="text" name="mobile_no" :value="old('mobile_no')" required autofocus autocomplete="mobile_no" placeholder="Mobile No" 
+                            style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="email" placeholder="Email" 
+                            style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <input id="new-password" type="password" name="password" required autocomplete="new-password" placeholder="Password" 
+                            style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password" 
+                            style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="form-buttons" style="display: flex; justify-content: space-between; gap: 10px;">
+                        <button type="submit" style="padding: 10px; font-size: 14px; border: none; border-radius: 4px; background-color: #007bff; color: white; cursor: pointer;">Register</button>
+                        <button type="button" onclick="closeForms()" style="padding: 10px; font-size: 14px; border: none; border-radius: 4px; background-color: #ccc; color: black; cursor: pointer;">Close</button>
+                    </div>
                 </form>
             </div>
         </div>
+
 
         <!-- About Section -->
         <div id="about" class="section about-section" style="text-align: center; background-color: #f3f4f6; padding: 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 800px; margin: 20px auto;">
@@ -135,28 +177,28 @@
                         <li><strong class="text-blue-800">School Publication:</strong>
                             <span class="font-medium text-blue-600">Conexión</span> - CCDI's Official School Publication
                         </li>
-                        <li><strong class="text-blue-800">Student Council:</strong> CCDI Legazpi Student Council</li>
+                        <li><strong class="text-blue-800">Student Council:</strong> CCDI Legazpi - College Student Governing Body</li>
                     </ul>
                 </div>
 
                 <!-- Developer Information -->
                 <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-blue-700 mb-6 border-b pb-2">Developer & Publication</h3>
+                    <h3 class="text-2xl font-semibold text-blue-700 mb-6 border-b pb-2">Developer's Information</h3>
                     <ul class="space-y-4 text-gray-700">
                         <li><strong class="text-blue-800">Developer:</strong>
-                            <span class="text-blue-600 font-medium">John Doe</span>
+                            <span class="text-blue-600 font-medium">Dominic L. Azupardo</span>
                             <p class="text-sm text-gray-500">Full-Stack Developer</p>
                         </li>
                         <li><strong class="text-blue-800">Email:</strong>
-                            <a href="mailto:johndoe@example.com" class="text-blue-600 hover:underline">johndoe@example.com</a>
+                            <a href="mailto:dominicazupardo21@gmail.com" class="text-blue-600 hover:underline">dominicazupardo21@gmail.com</a>
                         </li>
                         <li><strong class="text-blue-800">Phone:</strong>
-                            <a href="tel:+639123456789" class="text-blue-600 hover:underline">+63 912 345 6789</a>
+                            <a href="tel:+639123456789" class="text-blue-600 hover:underline">+63 991 402 8625</a>
                         </li>
-                        <li><strong class="text-blue-800">Publication Advisor:</strong>
-                            <span class="text-blue-600 font-medium">Jane Smith</span>
+                        <li><strong class="text-blue-800">Advisor:</strong>
+                            <span class="text-blue-600 font-medium">SIR JAY</span>
                         </li>
-                        <li><strong class="text-blue-800">Publication Email:</strong>
+                        <li><strong class="text-blue-800">Advisor Email:</strong>
                             <a href="mailto:conexion@ccdi.edu.ph" class="text-blue-600 hover:underline">conexion@ccdi.edu.ph</a>
                         </li>
                     </ul>
