@@ -29,20 +29,6 @@ class HomeController extends Controller
         ]);
     }
 
-    public function dashboard()
-    {
-        return view('dashboard', [
-            'presidents' => President::all(),
-            'vice_presidents' => VicePresident::all(),
-            'secretaries' => Secretary::all(),
-            'treasurers' => Treasurer::all(),
-            'pios' => PIO::all(),
-            'business_managers' => BusinessManager::all(),
-            'auditors' => Auditor::all(),
-            'peace_officers' => PeaceOfficer::all(),
-        ]);
-    }
-
     /**
      * Show the form for creating a new resource.
      */

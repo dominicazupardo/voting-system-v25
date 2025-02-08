@@ -56,10 +56,13 @@
                     <label for="name" class="block font-semibold">Name</label>
                     <input type="text" name="name" placeholder="Candidate for President">
                 </div>
+                @error('name')
+                        <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                @enderror
 
                 <div>
                     <label for="canidate_no" class="block font-semibold">Candidate No</label>
-                    <input type="number" name="candidate_no" placeholder="Candidate no.">
+                    <input type="number" name="candidate_no" placeholder="Candidate no." value="{{ $presidents->count() + 1 }}" readonly>
                 </div>
 
                 <div class="mt-6 space-x-4">

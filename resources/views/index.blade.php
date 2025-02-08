@@ -82,7 +82,7 @@
         </div>
 
        <!-- Registration Form -->
-        <div id="registerForm" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.7); z-index: 1000;">
+       <div id="registerForm" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: none; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.7); z-index: 1000;">
             <div class="form-container" style="background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); width: 400px; max-width: 90%;">
                 <form action="{{ route('register') }}" method="POST" style="display: flex; flex-direction: column; gap: 5px;">
                     @csrf
@@ -92,16 +92,28 @@
                     <div class="form-group">
                         <input name="student_no" type="text" :value="old('student_no')" required autofocus autocomplete="student_no" placeholder="Student ID Number" 
                             style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        @error('student_no')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <!-- Name Fields -->
                     <div class="form-group" style="display: flex; flex-direction: column; gap: 10px;">
                         <input id="firstname" type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="given-name" placeholder="First Name" 
                             style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        @error('firstname')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                         <input id="middlename" type="text" name="middlename" :value="old('middlename')" autocomplete="additional-name" placeholder="Middle Name" 
                             style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        @error('middlename')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                         <input id="lastname" type="text" name="lastname" :value="old('lastname')" required autocomplete="family-name" placeholder="Last Name" 
                             style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        @error('lastname')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <!-- Course -->
@@ -113,30 +125,45 @@
                                 <option value="{{ $course->course }}">{{ $course->course }}</option>
                             @endforeach
                         </select>
+                        @error('course')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <!-- Mobile No -->
                     <div class="form-group">
                         <input id="mobile_no" type="text" name="mobile_no" :value="old('mobile_no')" required autofocus autocomplete="mobile_no" placeholder="Mobile No" 
                             style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        @error('mobile_no')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <!-- Email -->
                     <div class="form-group">
                         <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="email" placeholder="Email" 
                             style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        @error('email')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <!-- Password -->
                     <div class="form-group">
                         <input id="new-password" type="password" name="password" required autocomplete="new-password" placeholder="Password" 
                             style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        @error('password')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <!-- Confirm Password -->
                     <div class="form-group">
                         <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password" 
                             style="width: 100%; padding: 5px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; outline: none;" />
+                        @error('password_confirmation')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <!-- Buttons -->

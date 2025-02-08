@@ -19,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/ballot', [BallotController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/results', [BallotController::class, 'results'])->name('ballots.results');
     Route::post('ballots/preview', [BallotController::class, 'preview'])->name('ballot.preview');
     Route::post('ballots/cast', [BallotController::class, 'cast'])->name('ballot.cast');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

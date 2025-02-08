@@ -16,62 +16,17 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         $course_data = [
             [
-                'course' => 'BS Computer Science 1',
+                'course' => 'BS Computer Science',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'course' => 'BS Computer Science 2',
+                'course' => 'BS Informatin Technology',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'course' => 'BS Computer Science 3',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'BS Computer Science 4',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'BS Informatin Technology 1',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'BS Informatin Technology 2',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'BS Informatin Technology 3',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'BS Informatin Technology 4',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'BS Office Administration 1',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'BS Office Administration 2',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'BS Office Administration 3',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'BS Office Administration 4',
+                'course' => 'BS Office Administration',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -81,17 +36,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'course' => 'ACT Programmig 2',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
                 'course' => 'ACT Networking 1',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'course' => 'ACT Networking 2',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

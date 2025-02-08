@@ -125,6 +125,20 @@ class BallotController extends Controller
         ]);
     }
 
+    public function results()
+    {
+        return view('results', [
+            'presidents' => President::orderBy('votes', 'desc')->get(),
+            'vice_presidents' => VicePresident::orderBy('votes', 'desc')->get(),
+            'secretaries' => Secretary::orderBy('votes', 'desc')->get(),
+            'treasurers' => Treasurer::orderBy('votes', 'desc')->get(),
+            'pios' => PIO::orderBy('votes', 'desc')->get(),
+            'business_managers' => BusinessManager::orderBy('votes', 'desc')->get(),
+            'auditors' => Auditor::orderBy('votes', 'desc')->get(),
+            'peace_officers' => PeaceOfficer::orderBy('votes', 'desc')->get(),
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

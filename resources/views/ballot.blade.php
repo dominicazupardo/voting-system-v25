@@ -1,17 +1,7 @@
 <x-app-layout>
     <div class="flex h-screen">
-        <!-- Sidebar -->
-        <div class="w-64 h-full bg-blue-900 text-white flex flex-col p-6 overflow-y-auto">
-            <a href="{{ route('dashboard') }}" class="mb-8">
-                <h3 class="text-2xl font-bold">Homepage</h3>
-            </a>
-            <p class="mb-6">{{ sprintf('%s, %s %s',  strtoupper(Auth::user()->lastname), Auth::user()->firstname, Auth::user()->middlename) }}</p>
-            <nav class="space-y-4">
-                <a href="{{ route('ballots.index') }}" class="hover:underline block">Ballot</a>
-                <a href="{{ route('dashboard') }}" class="hover:underline block">Results</a>
-                <a href="{{ route('candidates.index') }}" class="hover:underline block">Registrations</a>
-            </nav>
-        </div>
+        <!-- Side Bar -->
+        <x-sidebar />
 
         <!-- Content Section -->
         <div class="flex-grow bg-gradient-to-br bg-white text-blue-900 p-10">

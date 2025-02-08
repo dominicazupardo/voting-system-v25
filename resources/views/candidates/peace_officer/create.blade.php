@@ -59,7 +59,7 @@
 
                 <div>
                     <label for="canidate_no" class="block font-semibold">Candidate No</label>
-                    <input type="number" name="candidate_no" placeholder="Candidate no.">
+                    <input type="number" name="candidate_no" placeholder="Candidate no." value="{{ $peace_officers->count() + 1 }}" readonly>
                 </div>
 
                 <div class="mt-6 space-x-4">
