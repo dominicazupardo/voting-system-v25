@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('middlename');
             $table->string('lastname');
             $table->string('course');
+            $table->string('year');
+            $table->string('block');
             $table->string('mobile_no');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

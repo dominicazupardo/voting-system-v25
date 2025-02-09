@@ -21,14 +21,14 @@
                     <thead class="bg-blue-900 text-white">
                         <tr>
                             <th class="px-6 py-4 text-left">Name of Candidates</th>
-                            <th class="px-6 py-4 text-left">Candidate No.</th>
+                            <th class="px-6 py-4 text-left">Candidate ID.</th>
                         </tr>
                     </thead>
                     <tbody id="results-body">
                         @forelse($business_managers as $business_manager)
                         <tr class="border-b bg-white text-blue-900">
                             <td class="px-6 py-4">{{ $business_manager->name }}</td>
-                            <td class="px-6 py-4">{{ $business_manager->candidate_no }}</td>
+                            <td class="px-6 py-4">{{ sprintf("BM-%s-00%s", date('Y'), $business_manager->id) }}</td>
                         </tr>
                         @empty
                         <tr class="border-b bg-white text-blue-900">

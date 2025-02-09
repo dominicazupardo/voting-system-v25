@@ -9,9 +9,14 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
+        
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <!-- Scripts -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+        <!-- Icon -->
+        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" />
+        
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -33,6 +38,7 @@
                 {{ $slot }}
             </main>
         </div>
+        <x-footer />
         <script src="{{ asset('js/script.js') }}"></script>
     </body>
 </html>

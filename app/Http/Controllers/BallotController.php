@@ -105,7 +105,7 @@ class BallotController extends Controller
         $ballot->user_id = Auth::user()->id;
         $ballot->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('ballots.results');
     }
 
     /**

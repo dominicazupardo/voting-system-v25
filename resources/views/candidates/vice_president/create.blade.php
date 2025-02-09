@@ -21,14 +21,14 @@
                     <thead class="bg-blue-900 text-white">
                         <tr>
                             <th class="px-6 py-4 text-left">Name of Candidates</th>
-                            <th class="px-6 py-4 text-left">Candidate No.</th>
+                            <th class="px-6 py-4 text-left">Candidate ID.</th>
                         </tr>
                     </thead>
                     <tbody id="results-body">
                         @forelse($vice_presidents as $vice_president)
                         <tr class="border-b bg-white text-blue-900">
                             <td class="px-6 py-4">{{ $vice_president->name }}</td>
-                            <td class="px-6 py-4">{{ $vice_president->candidate_no }}</td>
+                            <td class="px-6 py-4">{{ sprintf("VP-%s-00%s", date('Y'), $vice_president->id) }}</td>
                         </tr>
                         @empty
                         <tr class="border-b bg-white text-blue-900">

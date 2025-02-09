@@ -50,15 +50,12 @@
                 <p style="font-size: 16px; margin-bottom: 10px;">Powered by:</p>
                 <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
                     <a href="https://web.facebook.com/profile.php?id=61551949402367" target="_blank">
-                        <img src="{{ asset('images/logos/conexion.png') }}" alt="Conexion Logo" style="width: 60px; height: 60px; border-radius: 50%;">
+                        <img src="{{ asset('images/logos/conexion.jpg') }}" alt="Conexion Logo" style="width: 60px; height: 60px; border-radius: 50%;">
                     </a>
                     <a href="https://web.facebook.com/ccdi.legazpi.2024" target="_blank">
-                        <img src="{{ asset('images/logos/ccdi.png') }}" alt="CCDI Logo" style="width: 60px; height: 60px; border-radius: 50%;">
+                        <img src="{{ asset('images/logos/ccdi.jpg') }}" alt="CCDI Logo" style="width: 60px; height: 60px; border-radius: 50%;">
                     </a>
                     <a href="https://web.facebook.com/profile.php?id=61550942620217" target="_blank">
-                        <img src="{{ asset('images/logos/csgb.png') }}" alt="CSGB Offical Logo" style="width: 60px; height: 60px; border-radius: 50%;">
-                    </a>
-                    <a href="https://web.facebook.com/dom.ortal.3" target="_blank">
                         <img src="{{ asset('images/logos/voting.png') }}" alt="Voting System Logo" style="width: 60px; height: 60px; border-radius: 50%;">
                     </a>
                 </div>
