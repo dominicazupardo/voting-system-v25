@@ -33,11 +33,13 @@ class SecretaryController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'candidate_no' => 'required|integer|min:1',
+            'partylist_name' => 'required|string|max:255',
         ]);
 
         $secretary = new Secretary();
         $secretary->name = $request->name;
         $secretary->candidate_no = $request->candidate_no;
+        $secretary->partylist_name = $request->partylist_name;
         $secretary->votes = 0;
         $secretary->save();
 

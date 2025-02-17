@@ -33,11 +33,13 @@ class PIOController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'candidate_no' => 'required|integer|min:1',
+            'partylist_name' => 'required|string|max:255',
         ]);
 
         $pio = new PIO();
         $pio->name = $request->name;
         $pio->candidate_no = $request->candidate_no;
+        $pio->partylist_name = $request->partylist_name;
         $pio->votes = 0;
         $pio->save();
 

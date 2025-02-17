@@ -31,12 +31,17 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'course' => 'ACT Programmig 1',
+                'course' => 'ACT Programming',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'course' => 'ACT Networking 1',
+                'course' => 'ACT Networking',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'course' => 'ACT Multimedia',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

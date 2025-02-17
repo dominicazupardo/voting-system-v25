@@ -8,5 +8,5 @@ class BusinessManager extends Model
 {
     protected $table = 'business_managers';
 
-    protected $fillables = ['name', 'candidate_no', 'votes'];
+    protected $fillables = ['name', 'candidate_no', 'votes', 'partylist_name'];
 }

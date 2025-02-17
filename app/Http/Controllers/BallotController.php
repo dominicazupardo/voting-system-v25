@@ -29,77 +29,108 @@ class BallotController extends Controller
     {
         $ballot = new Ballot();
 
-        $president_data = "";
-        $vice_president_data = "";
+        if ($request->president !== null) 
+        {
+            $ballot->president = $request->president;
+            $president = President::where('name', '=', $request->president)->get();
 
-        $ballot->president = $request->president;
-        $president = President::where('name', '=', $request->president)->get();
-        foreach ($president as $president_data) { 
-            $president_data->votes = $president_data->votes + 1; 
-            $president_data->save();
+            foreach ($president as $president_data) 
+            { 
+                $president_data->votes = $president_data->votes + 1; 
+                $president_data->save();
+            }
         }
             
-        $ballot->vice_president = $request->vice_president;
-        $vice_president = VicePresident::where('name', '=', $request->vice_president)->get();
-        foreach ($vice_president as $vice_president_data) {
-             $vice_president_data->votes = $vice_president_data->votes + 1; 
-             $vice_president_data->save();
+        if ($request->vice_president !== null) 
+        {
+            $ballot->vice_president = $request->vice_president;
+            $vice_president = VicePresident::where('name', '=', $request->vice_president)->get();
+            foreach ($vice_president as $vice_president_data) {
+                $vice_president_data->votes = $vice_president_data->votes + 1; 
+                $vice_president_data->save();
+            }
         }
 
-        $ballot->secretary = $request->secretary;
-        $secretary = Secretary::where('name', '=', $request->secretary)->get();
-        foreach ($secretary as $secretary_data) {
-            $secretary_data->votes = $secretary_data->votes + 1;
-            $secretary_data->save();
+        if ($request->secretary !== null) 
+        {
+            $ballot->secretary = $request->secretary;
+            $secretary = Secretary::where('name', '=', $request->secretary)->get();
+            foreach ($secretary as $secretary_data) {
+                $secretary_data->votes = $secretary_data->votes + 1;
+                $secretary_data->save();
+            }
+        }
+        
+        if ($request->treasurer !== null)
+        {
+            $ballot->treasurer = $request->treasurer;
+            $treasurer = Treasurer::where('name', '=', $request->treasurer)->get();
+            foreach ($treasurer as $treasurer_data) {
+                $treasurer_data->votes = $treasurer_data->votes + 1;
+                $treasurer_data->save();
+            }
         }
 
-        $ballot->treasurer = $request->treasurer;
-        $treasurer = Treasurer::where('name', '=', $request->treasurer)->get();
-        foreach ($treasurer as $treasurer_data) {
-            $treasurer_data->votes = $treasurer_data->votes + 1;
-            $treasurer_data->save();
+        if ($request->auditor !== null)
+        {
+            $ballot->auditor = $request->auditor;
+            $auditor = Auditor::where('name', '=', $request->auditor)->get();
+            foreach ($auditor as $auditor_data) {
+                $auditor_data->votes = $auditor_data->votes + 1;
+                $auditor_data->save();
+            }
         }
 
-        $ballot->auditor = $request->auditor;
-        $auditor = Auditor::where('name', '=', $request->auditor)->get();
-        foreach ($auditor as $auditor_data) {
-            $auditor_data->votes = $auditor_data->votes + 1;
-            $auditor_data->save();
+        if ($request->pio !== null)
+        {
+            $ballot->pio = $request->pio;
+            $pio = PIO::where('name', '=', $request->pio)->get();
+            foreach ($pio as $pio_data) {
+                $pio_data->votes = $pio_data->votes + 1;
+                $pio_data->save();
+            }
+        } 
+        
+
+        if ($request->peace_officer_1 !== null)
+        {
+            $ballot->peace_officer_1 = $request->peace_officer_1;
+            $peace_officer_1 = PeaceOfficer::where('name', '=', $request->peace_officer_1)->get();
+            foreach ($peace_officer_1 as $peace_officer_data_1) {
+                $peace_officer_data_1->votes = $peace_officer_data_1->votes + 1;
+                $peace_officer_data_1->save();
+            }
+        }
+        
+        if ($request->peace_officer_2 !== null)
+        {
+            $ballot->peace_officer_2 = $request->peace_officer_2;
+            $peace_officer_2 = PeaceOfficer::where('name', '=', $request->peace_officer_2)->get();
+            foreach ($peace_officer_2 as $peace_officer_data_2) {
+                $peace_officer_data_2->votes = $peace_officer_data_2->votes + 1;
+                $peace_officer_data_2->save();
+            }
         }
 
-        $ballot->pio = $request->pio;
-        $pio = PIO::where('name', '=', $request->pio)->get();
-        foreach ($pio as $pio_data) {
-            $pio_data->votes = $pio_data->votes + 1;
-            $pio_data->save();
+        if ($request->business_manager_1 !== null)
+        {
+            $ballot->business_manager_1 = $request->business_manager_1;
+            $business_manager_1 = BusinessManager::where('name', '=', $request->business_manager_1)->get();
+            foreach ($business_manager_1 as $business_manager_data_1) {
+                $business_manager_data_1->votes = $business_manager_data_1->votes + 1;
+                $business_manager_data_1->save();
+            }
         }
+        
 
-        $ballot->peace_officer_1 = $request->peace_officer_1;
-        $peace_officer_1 = PeaceOfficer::where('name', '=', $request->peace_officer_1)->get();
-        foreach ($peace_officer_1 as $peace_officer_data_1) {
-            $peace_officer_data_1->votes = $peace_officer_data_1->votes + 1;
-            $peace_officer_data_1->save();
-        }
-
-        $ballot->peace_officer_2 = $request->peace_officer_2;
-        $peace_officer_2 = PeaceOfficer::where('name', '=', $request->peace_officer_2)->get();
-        foreach ($peace_officer_2 as $peace_officer_data_2) {
-            $peace_officer_data_2->votes = $peace_officer_data_2->votes + 1;
-            $peace_officer_data_2->save();
-        }
-
-        $ballot->business_manager_1 = $request->business_manager_1;
-        $business_manager_1 = BusinessManager::where('name', '=', $request->business_manager_1)->get();
-        foreach ($business_manager_1 as $business_manager_data_1) {
-            $business_manager_data_1->votes = $business_manager_data_1->votes + 1;
-            $business_manager_data_1->save();
-        }
-
-        $ballot->business_manager_2  = $request->business_manager_2;
-        $business_manager_2 = BusinessManager::where('name', '=', $request->business_manager_2)->get();
-        foreach ($business_manager_2 as $business_manager_data_2) {
-            $business_manager_data_2->votes = $business_manager_data_2->votes + 1;
-            $business_manager_data_2->save();
+        if ($request->business_manager_2 !== null)
+        {
+            $ballot->business_manager_2  = $request->business_manager_2;
+            $business_manager_2 = BusinessManager::where('name', '=', $request->business_manager_2)->get();
+            foreach ($business_manager_2 as $business_manager_data_2) {
+                $business_manager_data_2->votes = $business_manager_data_2->votes + 1;
+                $business_manager_data_2->save();
+            }
         }
 
         $ballot->user_id = Auth::user()->id;

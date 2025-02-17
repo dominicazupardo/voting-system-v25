@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('candidate_no');
+            $table->string('partylist_name');
             $table->integer('votes')->default(0);
             $table->timestamps();
         });

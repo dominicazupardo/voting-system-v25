@@ -22,6 +22,7 @@
                         <tr>
                             <th class="px-6 py-4 text-left">Name of Candidates</th>
                             <th class="px-6 py-4 text-left">Candidate ID.</th>
+                            <th class="px-6 py-4 text-left">Party List</th>
                         </tr>
                     </thead>
                     <tbody id="results-body">
@@ -29,10 +30,11 @@
                         <tr class="border-b bg-white text-blue-900">
                             <td class="px-6 py-4">{{ $auditor->name }}</td>
                             <td class="px-6 py-4">{{ sprintf("AU-%s-00%s", date('Y'), $auditor->id) }}</td>
+                            <td class="px-6 py-4">{{ $auditor->partylist_name }}</td>
                         </tr>
                         @empty
                         <tr class="border-b bg-white text-blue-900">
-                            <td colspan="2" class="px-6 py-4">Empty Record!</td>
+                            <td colspan="3" class="px-6 py-4">Empty Record!</td>
                         </tr>
                         @endempty
                     </tbody>
@@ -60,6 +62,11 @@
                 <div>
                     <label for="canidate_no" class="block font-semibold">Candidate No</label>
                     <input type="number" name="candidate_no" placeholder="Candidate no." value="{{ $auditors->count() + 1 }}" readonly>
+                </div>
+
+                <div>
+                    <label for="partylist_name" class="block font-semibold">Party List</label>
+                    <input type="text" name="partylist_name" placeholder="Party List" value="">
                 </div>
 
                 <div class="mt-6 space-x-4">

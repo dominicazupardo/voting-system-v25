@@ -33,11 +33,13 @@ class PresidentController extends Controller
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
                 'candidate_no' => 'required|integer|min:1',
+                'partylist_name' => 'required|string|max:255',
             ]);
 
             $president = new President();
             $president->name = $request->name;
             $president->candidate_no = $request->candidate_no;
+            $president->partylist_name = $request->partylist_name;
             $president->votes = 0;
             $president->save();
 

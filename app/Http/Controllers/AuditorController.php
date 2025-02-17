@@ -33,11 +33,13 @@ class AuditorController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'candidate_no' => 'required|integer|min:1',
+            'partylist_name' => 'required|string|max:255',
         ]);
 
         $auditor = new Auditor();
         $auditor->name = $request->name;
         $auditor->candidate_no = $request->candidate_no;
+        $auditor->partylist_name = $request->partylist_name;
         $auditor->votes = 0;
         $auditor->save();
 

@@ -33,11 +33,13 @@ class PeaceOfficerController extends Controller
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
                 'candidate_no' => 'required|integer|min:1',
+                'partylist_name' => 'required|string|max:255',
             ]);
 
             $peace_officer = new PeaceOfficer();
             $peace_officer->name = $request->name;
             $peace_officer->candidate_no = $request->candidate_no;
+            $peace_officer->partylist_name = $request->partylist_name;
             $peace_officer->votes = 0;
             $peace_officer->save();
 

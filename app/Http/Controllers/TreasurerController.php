@@ -33,11 +33,13 @@ class TreasurerController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'candidate_no' => 'required|integer|min:1',
+            'partylist_name' => 'required|string|max:255',
         ]);
 
         $treasurer = new Treasurer();
         $treasurer->name = $request->name;
         $treasurer->candidate_no = $request->candidate_no;
+        $treasurer->partylist_name = $request->partylist_name;
         $treasurer->votes = 0;
         $treasurer->save();
 

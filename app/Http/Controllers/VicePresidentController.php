@@ -33,11 +33,13 @@ class VicePresidentController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'candidate_no' => 'required|integer|min:1',
+            'partylist_name' => 'required|string|max:255',
         ]);
 
         $vice_president = new VicePresident();
         $vice_president->name = $request->name;
         $vice_president->candidate_no = $request->candidate_no;
+        $vice_president->partylist_name = $request->partylist_name;
         $vice_president->votes = 0;
         $vice_president->save();
 

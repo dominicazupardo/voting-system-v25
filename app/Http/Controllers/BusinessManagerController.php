@@ -33,11 +33,13 @@ class BusinessManagerController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'candidate_no' => 'required|integer|min:1',
+            'partylist_name' => 'required|string|max:255',
         ]);
 
         $business_manager = new BusinessManager();
         $business_manager->name = $request->name;
         $business_manager->candidate_no = $request->candidate_no;
+        $business_manager->partylist_name = $request->partylist_name;
         $business_manager->votes = 0;
         $business_manager->save();
 

@@ -8,5 +8,5 @@ class Secretary extends Model
 {
     protected $table = 'secretaries';
 
-    protected $fillables = ['name', 'candidate_no', 'votes'];
+    protected $fillables = ['name', 'candidate_no', 'votes', 'partylist_name'];
 }
