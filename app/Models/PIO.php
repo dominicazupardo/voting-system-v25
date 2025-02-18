@@ -8,5 +8,5 @@ class PIO extends Model
 {
     protected $table = 'p_i_o_s';
 
-    protected $fillables = ['name', 'candidate_no', 'votes', 'partylist_name'];
+    protected $fillables = ['name', 'candidate_no', 'votes', 'partylist_name', 'image'];
 }

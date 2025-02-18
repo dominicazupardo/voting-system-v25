@@ -34,12 +34,16 @@ class PeaceOfficerController extends Controller
                 'name' => 'required|string|max:255',
                 'candidate_no' => 'required|integer|min:1',
                 'partylist_name' => 'required|string|max:255',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
+
+            $path = $request->file('image')->store('images', 'public');
 
             $peace_officer = new PeaceOfficer();
             $peace_officer->name = $request->name;
             $peace_officer->candidate_no = $request->candidate_no;
             $peace_officer->partylist_name = $request->partylist_name;
+            $peace_officer->image = basename($path);
             $peace_officer->votes = 0;
             $peace_officer->save();
 

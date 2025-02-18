@@ -12,7 +12,8 @@ use App\Http\Controllers\{
     PresidentController,
     SecretaryController,
     TreasurerController,
-    VicePresidentController
+    VicePresidentController,
+    UserController
 };
 
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/auditors', AuditorController::class);
     Route::resource('/peace_officers', PeaceOfficerController::class);
     Route::resource('/business_managers', BusinessManagerController::class);
+    Route::resource('/users', UserController::class);
+    Route::get('/users/approve/{id}', [UserController::class, 'approve'])->name('user.approve');
 });
 
 require __DIR__.'/auth.php';

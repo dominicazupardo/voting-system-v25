@@ -34,12 +34,16 @@ class PIOController extends Controller
             'name' => 'required|string|max:255',
             'candidate_no' => 'required|integer|min:1',
             'partylist_name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
+
+        $path = $request->file('image')->store('images', 'public');
 
         $pio = new PIO();
         $pio->name = $request->name;
         $pio->candidate_no = $request->candidate_no;
         $pio->partylist_name = $request->partylist_name;
+        $pio->image = basename($path);
         $pio->votes = 0;
         $pio->save();
 

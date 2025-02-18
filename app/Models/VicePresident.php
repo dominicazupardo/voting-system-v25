@@ -8,5 +8,5 @@ class VicePresident extends Model
 {
     protected $table = 'vice_presidents';
 
-    protected $fillables = ['name', 'candidate_no', 'votes', 'partylist_name'];
+    protected $fillables = ['name', 'candidate_no', 'votes', 'partylist_name', 'image'];
 }

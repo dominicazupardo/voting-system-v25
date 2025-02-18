@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('presidents', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image');
             $table->integer('candidate_no');
             $table->string('partylist_name');
             $table->integer('votes')->default(0);

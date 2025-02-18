@@ -34,12 +34,16 @@ class BusinessManagerController extends Controller
             'name' => 'required|string|max:255',
             'candidate_no' => 'required|integer|min:1',
             'partylist_name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
+
+        $path = $request->file('image')->store('images', 'public');
 
         $business_manager = new BusinessManager();
         $business_manager->name = $request->name;
         $business_manager->candidate_no = $request->candidate_no;
         $business_manager->partylist_name = $request->partylist_name;
+        $business_manager->image = basename($path);
         $business_manager->votes = 0;
         $business_manager->save();
 

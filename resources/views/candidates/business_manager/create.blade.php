@@ -52,11 +52,16 @@
                 </ul>
             @endif
             <h1 class="text-3xl font-bold mb-6">Registration</h1>
-            <form action="{{ route('business_managers.store') }}" method="POST" class="space-y-6">
+            <form action="{{ route('business_managers.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <label for="name" class="block font-semibold">Name</label>
                     <input type="text" name="name" placeholder="Candidate for Business Manager">
+                </div>
+
+                <div>
+                    <label for="image" class="block font-semibold">Choose Image:</label>
+                    <input type="file" name="image" id="image" required>
                 </div>
 
                 <div>

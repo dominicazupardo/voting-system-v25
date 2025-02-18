@@ -13,6 +13,7 @@ use App\Models\{
     BusinessManager,
     Auditor,
     PeaceOfficer,
+    User,
 };
 use Illuminate\Http\Request;
 
@@ -133,6 +134,10 @@ class BallotController extends Controller
             }
         }
 
+        $user = User::find(Auth::user()->id);
+        $user->has_voted = true;
+        $user->save();
+        
         $ballot->user_id = Auth::user()->id;
         $ballot->save();
 

@@ -52,7 +52,7 @@
                 </ul>
             @endif
             <h1 class="text-3xl font-bold mb-6">Registration</h1>
-            <form action="{{ route('pios.store') }}" method="POST" class="space-y-6">
+            <form action="{{ route('pios.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <label for="name" class="block font-semibold">Name</label>
@@ -62,6 +62,11 @@
                 <div>
                     <label for="canidate_no" class="block font-semibold">Candidate No</label>
                     <input type="number" name="candidate_no" placeholder="Candidate no." value="{{ $pios->count() + 1 }}" readonly>
+                </div>
+
+                <div>
+                    <label for="image" class="block font-semibold">Choose Image:</label>
+                    <input type="file" name="image" id="image" required>
                 </div>
 
                 <div>

@@ -1,4 +1,4 @@
-<footer class="bg-blue-900 text-white py-10" style="height: 563px; padding-top: 7%">
+<footer class="bg-blue-900 text-white py-10" style="height: 563px; margin-top:1000px">
     <div class="container mx-auto px-6 md:px-12 lg:px-20">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>

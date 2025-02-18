@@ -73,7 +73,7 @@
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
                     <h2>Login</h2>
-                    <input id="student_no" type="text" name="student_no" :value="old('student_no')" required autofocus autocomplete="student_no" placeholder="Student ID Number"/>
+                    <input id="student_no" type="text" name="student_no" :value="old('student_no')" required autofocus autocomplete="student_no" placeholder="Student ID Number Or Admin ID"/>
                     <x-input-error :messages="$errors->get('student_no')" class="mt-2" />
                     <input id="password" type="password" name="password" required autocomplete="current-password" placeholder="Password"/>
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />

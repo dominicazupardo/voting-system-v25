@@ -34,12 +34,16 @@ class TreasurerController extends Controller
             'name' => 'required|string|max:255',
             'candidate_no' => 'required|integer|min:1',
             'partylist_name' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
+
+        $path = $request->file('image')->store('images', 'public');
 
         $treasurer = new Treasurer();
         $treasurer->name = $request->name;
         $treasurer->candidate_no = $request->candidate_no;
         $treasurer->partylist_name = $request->partylist_name;
+        $treasurer->image = basename($path);
         $treasurer->votes = 0;
         $treasurer->save();
 

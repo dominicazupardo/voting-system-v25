@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('block');
             $table->string('mobile_no');
             $table->boolean('is_approved')->default(false);
+            $table->boolean('has_voted')->default(false);
             $table->integer('role')->default(3); // 1 admin, 2 developer, 3 user
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
