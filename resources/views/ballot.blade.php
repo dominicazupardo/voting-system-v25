@@ -374,13 +374,13 @@
                             </div>
                         </div>
                     @elseif(Auth::user()->role == 1)
-                        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-6 gap-4">
+                        <div class="grid grid-cols-9 sm:grid-cols-9 md:grid-cols-9 gap-4">
                             <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <p class="text-sm text-gray-600">Hi admin! Nice to see you!</p>
                             </div>
                         </div>
                     @else 
-                        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-6 gap-4">
+                        <div class="grid grid-cols-9 sm:grid-cols-9 md:grid-cols-9 gap-4">
                             <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <p class="text-sm text-gray-600">You already casted a vote! Thank you!</p>
                             </div>
@@ -401,7 +401,7 @@
                     <p><strong>Auditor:</strong> <span id="preview-auditor"></span></p>
                     <p><strong>Business Manager:</strong> <span id="preview-business-manager"></span></p>
                 </div>
-                <div class="mt-4 space-x-2">
+                <div class="mt-4 space-x-2  ">
                     <button class="bg-green-600 text-white font-semibold py-1 px-3 rounded hover:bg-green-700 text-sm" onclick="confirmSubmission()">
                         Confirm Submission
                     </button>
