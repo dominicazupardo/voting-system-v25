@@ -27,13 +27,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $president->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $president->firstname, substr($president->middlename, 0, 1), $president->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $president->partylist_name }}</p>
                     
                                 <!-- Radio Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="president_{{ $loop->index }}" name="president" value="{{ $president->name }}" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
+                                        <input type="hidden" name="president_id" value="{{ $president->id }}" />
+                                        <input type="radio" id="president_{{ $loop->index }}" name="president" value="{{ sprintf('%s %s. %s', $president->firstname, substr($president->middlename, 0, 1), $president->lastname) }}" class="hidden peer" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="president_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -62,13 +63,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $vice_president->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $vice_president->firstname, substr($vice_president->middlename, 0, 1), $vice_president->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $vice_president->partylist_name }}</p>
                     
                                 <!-- Selection Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="vice_president_{{ $loop->index }}" name="vice_president" value="{{ $vice_president->name }}" class="hidden peer">
+                                        <input type="hidden" name="vice_president_id" value="{{ $vice_president->id }}" />
+                                        <input type="radio" id="vice_president_{{ $loop->index }}" name="vice_president" value="{{ sprintf('%s %s. %s', $vice_president->firstname, substr($vice_president->middlename, 0, 1), $vice_president->lastname) }}" class="hidden peer" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="vice_president_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -98,13 +100,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $secretary->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $secretary->firstname, substr($secretary->middlename, 0, 1), $secretary->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $secretary->partylist_name }}</p>
                     
                                 <!-- Selection Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="secretary_{{ $loop->index }}" name="secretary" value="{{ $secretary->name }}" class="hidden peer">
+                                        <input type="hidden" name="secretary_id" value="{{ $secretary->id }}" />
+                                        <input type="radio" id="secretary_{{ $loop->index }}" name="secretary" value="{{ sprintf('%s %s. %s', $secretary->firstname, substr($secretary->middlename, 0, 1), $secretary->lastname) }}" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="secretary_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -134,13 +137,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $treasurer->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $treasurer->firstname, substr($treasurer->middlename, 0, 1), $treasurer->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $treasurer->partylist_name }}</p>
                     
                                 <!-- Selection Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="treasurer_{{ $loop->index }}" name="treasurer" value="{{ $treasurer->name }}" class="hidden peer">
+                                        <input type="hidden" name="treasurer_id" value="{{ $treasurer->id }}" />
+                                        <input type="radio" id="treasurer_{{ $loop->index }}" name="treasurer" value="{{ sprintf('%s %s. %s', $treasurer->firstname, substr($treasurer->middlename, 0, 1), $treasurer->lastname) }}" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="treasurer_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -169,13 +173,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $auditor->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $auditor->firstname, substr($auditor->middlename, 0, 1), $auditor->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $auditor->partylist_name }}</p>
                     
                                 <!-- Selection Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="auditor_{{ $loop->index }}" name="auditor" value="{{ $auditor->name }}" class="hidden peer">
+                                        <input type="hidden" name="auditor_id" value="{{ $auditor->id }}" />
+                                        <input type="radio" id="auditor_{{ $loop->index }}" name="auditor" value="{{ sprintf('%s %s. %s', $auditor->firstname, substr($auditor->middlename, 0, 1), $auditor->lastname) }}" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="auditor_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -205,13 +210,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $pio->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $pio->firstname, substr($pio->middlename, 0, 1), $pio->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $pio->partylist_name }}</p>
                     
                                 <!-- Selection Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="pio_{{ $loop->index }}" name="pio" value="{{ $pio->name }}" class="hidden peer">
+                                        <input type="hidden" name="pio_id" value="{{ $pio->id }}" />
+                                        <input type="radio" id="pio_{{ $loop->index }}" name="pio" value="{{ sprintf('%s %s. %s', $pio->firstname, substr($pio->middlename, 0, 1), $pio->lastname) }}" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="pio_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -241,13 +247,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $business_manager->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $business_manager->firstname, substr($business_manager->middlename, 0, 1), $business_manager->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $business_manager->partylist_name }}</p>
                     
                                 <!-- Selection Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="business_manager_1_{{ $loop->index }}" name="business_manager_1" value="{{ $business_manager->name }}" class="hidden peer">
+                                        <input type="hidden" name="business_manager_1_id" value="{{ $business_manager->id }}" />
+                                        <input type="radio" id="business_manager_1_{{ $loop->index }}" name="business_manager_1" value="{{ sprintf('%s %s. %s', $business_manager->firstname, substr($business_manager->middlename, 0, 1), $business_manager->lastname) }}" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="business_manager_1_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -275,13 +282,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $business_manager->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $business_manager->firstname, substr($business_manager->middlename, 0, 1), $business_manager->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $business_manager->partylist_name }}</p>
                     
                                 <!-- Selection Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="business_manager_2_{{ $loop->index }}" name="business_manager_2" value="{{ $business_manager->name }}" class="hidden peer">
+                                        <input type="hidden" name="business_manager_2_id" value="{{ $business_manager->id }}" />
+                                        <input type="radio" id="business_manager_2_{{ $loop->index }}" name="business_manager_2" value="{{ sprintf('%s %s. %s', $business_manager->firstname, substr($business_manager->middlename, 0, 1), $business_manager->lastname) }}" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="business_manager_2_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -311,13 +319,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $peace_officer->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $peace_officer->firstname, substr($peace_officer->middlename, 0, 1), $peace_officer->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $peace_officer->partylist_name }}</p>
                     
                                 <!-- Selection Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="peace_officer_1_{{ $loop->index }}" name="peace_officer_1" value="{{ $peace_officer->name }}" class="hidden peer">
+                                        <input type="hidden" name="peace_officer_1_id" value="{{ $peace_officer->id }}" />
+                                        <input type="radio" id="peace_officer_1_{{ $loop->index }}" name="peace_officer_1" value="{{ sprintf('%s %s. %s', $peace_officer->firstname, substr($peace_officer->middlename, 0, 1), $peace_officer->lastname) }}" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="peace_officer_1_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -345,13 +354,14 @@
                                 @endif
                     
                                 <!-- Name & Party List -->
-                                <p class="text-lg font-semibold mt-2">{{ $peace_officer->name }}</p>
+                                <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $peace_officer->firstname, substr($peace_officer->middlename, 0, 1), $peace_officer->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $peace_officer->partylist_name }}</p>
                     
                                 <!-- Selection Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
-                                        <input type="radio" id="peace_officer_2_{{ $loop->index }}" name="peace_officer_2" value="{{ $peace_officer->name }}" class="hidden peer">
+                                        <input type="hidden" name="peace_officer_2_id" value="{{ $peace_officer->id }}" />
+                                        <input type="radio" id="peace_officer_2_{{ $loop->index }}" name="peace_officer_2" value="{{ sprintf('%s %s. %s', $peace_officer->firstname, substr($peace_officer->middlename, 0, 1), $peace_officer->lastname) }}" class="hidden peer" onclick="toggleCardColor({{ $loop->index }})">
                                         <label for="peace_officer_2_{{ $loop->index }}" class="cursor-pointer px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium text-gray-700 peer-checked:bg-blue-500 peer-checked:text-white transition">
                                             Select
                                         </label>
@@ -363,29 +373,31 @@
                             @endforelse
                         </div>
                     </div>
-                    @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
-                        <button type="submit" class="bg-blue-600 text-white font-semibold py-1 px-3 rounded hover:bg-blue-700 mt-2 text-sm">
-                            Preview Your Choices
-                        </button>
-                    @elseif(Auth::user()->is_approved == false)
-                        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-6 gap-4">
-                            <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
-                                <p class="text-sm text-gray-600">Please request for approval to admin to cast a vote</p>
+                    <div class="grid grid-cols-12 mt-4">
+                        @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
+                            <button type="submit" class="bg-blue-600 text-white font-semibold py-1 px-3 rounded hover:bg-blue-700 mt-2 text-sm">
+                                Preview Your Choices
+                            </button>
+                        @elseif(Auth::user()->is_approved == false)
+                            <div class="grid grid-cols-12 mt-4">
+                                <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
+                                    <p class="text-sm text-gray-600">Please request for approval to admin to cast a vote</p>
+                                </div>
                             </div>
-                        </div>
-                    @elseif(Auth::user()->role == 1)
-                        <div class="grid grid-cols-9 sm:grid-cols-9 md:grid-cols-9 gap-4">
-                            <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
-                                <p class="text-sm text-gray-600">Hi admin! Nice to see you!</p>
+                        @elseif(Auth::user()->role == 1)
+                            <div class="grid grid-cols-12 mt-4">
+                                <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
+                                    <p class="text-sm text-gray-600">Hi admin! Nice to see you!</p>
+                                </div>
                             </div>
-                        </div>
-                    @else 
-                        <div class="grid grid-cols-9 sm:grid-cols-9 md:grid-cols-9 gap-4">
-                            <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
-                                <p class="text-sm text-gray-600">You already casted a vote! Thank you!</p>
+                        @else 
+                            <div class="grid grid-cols-9 sm:grid-cols-9 md:grid-cols-9 gap-4">
+                                <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
+                                    <p class="text-sm text-gray-600">You already casted a vote! Thank you!</p>
+                                </div>
                             </div>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </form>
 

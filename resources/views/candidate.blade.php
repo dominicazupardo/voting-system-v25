@@ -31,23 +31,23 @@
                 </div>
 
                 <div class="space-y-1">
-                    <label for="pio" class="block text-md font-semibold">Candidate for P.I.O. ({{ isset($pio_counts) ? $pio_counts : 0 }})</label>
-                    <a href="{{ route('pios.create') }}" class="text-md text-blue-600 hover:underline">Add Candidate</a>
-                </div>
-
-                <div class="space-y-1">
-                    <label for="peace_officer" class="block text-md font-semibold">Candidate for Peace Officer ({{ isset($peace_officer_counts) ? $peace_officer_counts : 0 }})</label>
-                    <a href="{{ route('peace_officers.create') }}" class="text-md text-blue-600 hover:underline">Add Candidate</a>
-                </div>
-
-                <div class="space-y-1">
                     <label for="auditor" class="block text-md font-semibold">Candidate for Auditor ({{ isset($auditor_counts) ? $auditor_counts : 0 }})</label>
                     <a href="{{ route('auditors.create') }}" class="text-md text-blue-600 hover:underline">Add Candidate</a>
                 </div>
 
                 <div class="space-y-1">
+                    <label for="pio" class="block text-md font-semibold">Candidate for P.I.O. ({{ isset($pio_counts) ? $pio_counts : 0 }})</label>
+                    <a href="{{ route('pios.create') }}" class="text-md text-blue-600 hover:underline">Add Candidate</a>
+                </div>
+
+                <div class="space-y-1">
                     <label for="business_manager" class="block text-md font-semibold">Candidate for Business Manager ({{ isset($business_manager_counts) ? $business_manager_counts : 0 }})</label>
                     <a href="{{ route('business_managers.create') }}" class="text-md text-blue-600 hover:underline">Add Candidate</a>
+                </div>
+
+                <div class="space-y-1">
+                    <label for="peace_officer" class="block text-md font-semibold">Candidate for Peace Officer ({{ isset($peace_officer_counts) ? $peace_officer_counts : 0 }})</label>
+                    <a href="{{ route('peace_officers.create') }}" class="text-md text-blue-600 hover:underline">Add Candidate</a>
                 </div>
             </form>
 

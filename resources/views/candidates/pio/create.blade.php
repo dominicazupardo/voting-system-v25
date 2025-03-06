@@ -28,7 +28,7 @@
                     <tbody id="results-body">
                         @forelse($pios as $pio)
                         <tr class="border-b bg-white text-blue-900">
-                            <td class="px-6 py-4">{{ $pio->name }}</td>
+                            <td class="px-6 py-4">{{ sprintf("%s %s. %s", $pio->firstname, substr($pio->middlename, 0, 1), $pio->lastname) }}</td>
                             <td class="px-6 py-4">{{ sprintf("PI-%s-00%s", date('Y'), $pio->id) }}</td>
                             <td class="px-6 py-4">{{ $pio->partylist_name }}</td>
                         </tr>
@@ -54,21 +54,13 @@
             <h1 class="text-3xl font-bold mb-6">Registration</h1>
             <form action="{{ route('pios.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
                 @csrf
-                <div>
-                    <label for="name" class="block font-semibold">Name</label>
-                    <input type="text" name="name" placeholder="Candidate for P.I.O.">
-                </div>
+                <x-candidate-form />
 
                 <div>
                     <label for="canidate_no" class="block font-semibold">Candidate No</label>
                     <input type="number" name="candidate_no" placeholder="Candidate no." value="{{ $pios->count() + 1 }}" readonly>
                 </div>
-
-                <div>
-                    <label for="image" class="block font-semibold">Choose Image:</label>
-                    <input type="file" name="image" id="image" required>
-                </div>
-
+                
                 <div>
                     <label for="partylist_name" class="block font-semibold">Party List</label>
                     <input type="text" name="partylist_name" placeholder="Party List" value="">

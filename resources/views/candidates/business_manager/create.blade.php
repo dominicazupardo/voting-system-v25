@@ -28,7 +28,7 @@
                     <tbody id="results-body">
                         @forelse($business_managers as $business_manager)
                         <tr class="border-b bg-white text-blue-900">
-                            <td class="px-6 py-4">{{ $business_manager->name }}</td>
+                            <td class="px-6 py-4">{{ sprintf("%s %s. %s", $business_manager->firstname, substr($business_manager->middlename, 0, 1), $business_manager->lastname) }}</td>
                             <td class="px-6 py-4">{{ sprintf("BM-%s-00%s", date('Y'), $business_manager->id) }}</td>
                             <td class="px-6 py-4">{{ $business_manager->partylist_name }}</td>
                         </tr>
@@ -54,15 +54,7 @@
             <h1 class="text-3xl font-bold mb-6">Registration</h1>
             <form action="{{ route('business_managers.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
                 @csrf
-                <div>
-                    <label for="name" class="block font-semibold">Name</label>
-                    <input type="text" name="name" placeholder="Candidate for Business Manager">
-                </div>
-
-                <div>
-                    <label for="image" class="block font-semibold">Choose Image:</label>
-                    <input type="file" name="image" id="image" required>
-                </div>
+                <x-candidate-form />
 
                 <div>
                     <label for="canidate_no" class="block font-semibold">Candidate No</label>

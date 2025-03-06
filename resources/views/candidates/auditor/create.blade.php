@@ -28,7 +28,7 @@
                     <tbody id="results-body">
                         @forelse($auditors as $auditor)
                         <tr class="border-b bg-white text-blue-900">
-                            <td class="px-6 py-4">{{ $auditor->name }}</td>
+                            <td class="px-6 py-4">{{ sprintf("%s %s. %s", $auditor->firstname, substr($auditor->middlename, 0, 1), $auditor->lastname) }}</td>
                             <td class="px-6 py-4">{{ sprintf("AU-%s-00%s", date('Y'), $auditor->id) }}</td>
                             <td class="px-6 py-4">{{ $auditor->partylist_name }}</td>
                         </tr>
@@ -54,15 +54,7 @@
             <h1 class="text-3xl font-bold mb-6">Registration</h1>
             <form action="{{ route('auditors.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
                 @csrf
-                <div>
-                    <label for="name" class="block font-semibold">Name</label>
-                    <input type="text" name="name" placeholder="Candidate for Auditor">
-                </div>
-
-                <div>
-                    <label for="image" class="block font-semibold">Choose Image:</label>
-                    <input type="file" name="image" id="image" required>
-                </div>
+                <x-candidate-form />
                 
                 <div>
                     <label for="canidate_no" class="block font-semibold">Candidate No</label>

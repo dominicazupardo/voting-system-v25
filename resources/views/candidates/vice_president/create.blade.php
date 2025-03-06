@@ -28,7 +28,7 @@
                     <tbody id="results-body">
                         @forelse($vice_presidents as $vice_president)
                         <tr class="border-b bg-white text-blue-900">
-                            <td class="px-6 py-4">{{ $vice_president->name }}</td>
+                            <td class="px-6 py-4">{{ sprintf("%s %s. %s", $vice_president->firstname, substr($vice_president->middlename, 0, 1), $vice_president->lastname) }}</td>
                             <td class="px-6 py-4">{{ sprintf("VP-%s-00%s", date('Y'), $vice_president->id) }}</td>
                             <td class="px-6 py-4">{{ $vice_president->partylist_name }}</td>
                         </tr>
@@ -54,15 +54,7 @@
             <h1 class="text-3xl font-bold mb-6">Registration</h1>
             <form action="{{ route('vice_presidents.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
                 @csrf
-                <div>
-                    <label for="name" class="block font-semibold">Name</label>
-                    <input type="text" name="name" placeholder="Candidate for Vice President">
-                </div>
-
-                <div>
-                    <label for="image" class="block font-semibold">Choose Image:</label>
-                    <input type="file" name="image" id="image" required>
-                </div>
+                <x-candidate-form />
 
                 <div>
                     <label for="canidate_no" class="block font-semibold">Candidate No</label>

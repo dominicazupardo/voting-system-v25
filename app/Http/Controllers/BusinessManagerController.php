@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CandidateRequest;
 use App\Models\BusinessManager;
-use Illuminate\Http\Request;
 
 class BusinessManagerController extends Controller
 {
@@ -28,26 +28,22 @@ class BusinessManagerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CandidateRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'candidate_no' => 'required|integer|min:1',
-            'partylist_name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
-
-        $path = $request->file('image')->store('images', 'public');
-
-        $business_manager = new BusinessManager();
-        $business_manager->name = $request->name;
-        $business_manager->candidate_no = $request->candidate_no;
-        $business_manager->partylist_name = $request->partylist_name;
-        $business_manager->image = basename($path);
-        $business_manager->votes = 0;
-        $business_manager->save();
-
-        return redirect()->route('business_managers.create');
+        $validatedData = $request->validated();
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $validatedData['image'] = basename($imagePath);
+        } else {
+            return back()->withErrors(['image' => 'Image upload failed.']);
+        }
+    
+        $validatedData['votes'] = 0;
+    
+        BusinessManager::create($validatedData);
+    
+        return redirect()->route('business_managers.create')->with('success', 'Business Manager created successfully!');
     }
 
     /**
@@ -69,7 +65,7 @@ class BusinessManagerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BusinessManager $businessManager)
+    public function update(CandidateRequest $request, BusinessManager $businessManager)
     {
         //
     }

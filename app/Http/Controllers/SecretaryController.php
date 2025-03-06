@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CandidateRequest;
 use App\Models\Secretary;
-use Illuminate\Http\Request;
 
 class SecretaryController extends Controller
 {
@@ -28,26 +28,22 @@ class SecretaryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CandidateRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'candidate_no' => 'required|integer|min:1',
-            'partylist_name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
-
-        $path = $request->file('image')->store('images', 'public');
-
-        $secretary = new Secretary();
-        $secretary->name = $request->name;
-        $secretary->candidate_no = $request->candidate_no;
-        $secretary->partylist_name = $request->partylist_name;
-        $secretary->image = basename($path);
-        $secretary->votes = 0;
-        $secretary->save();
-
-        return redirect()->route('secretaries.create');
+        $validatedData = $request->validated();
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $validatedData['image'] = basename($imagePath);
+        } else {
+            return back()->withErrors(['image' => 'Image upload failed.']);
+        }
+    
+        $validatedData['votes'] = 0;
+    
+        Secretary::create($validatedData);
+    
+        return redirect()->route('secretaries.create')->with('success', 'Secretary created successfully!');
     }
 
     /**
@@ -69,7 +65,7 @@ class SecretaryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Secretary $secretary)
+    public function update(CandidateRequest $request, Secretary $secretary)
     {
         //
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auditor;
-use Illuminate\Http\Request;
+use App\Http\Requests\CandidateRequest;
 
 class AuditorController extends Controller
 {
@@ -28,27 +28,24 @@ class AuditorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CandidateRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'candidate_no' => 'required|integer|min:1',
-            'partylist_name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
-
-        $path = $request->file('image')->store('images', 'public');
-
-        $auditor = new Auditor();
-        $auditor->name = $request->name;
-        $auditor->candidate_no = $request->candidate_no;
-        $auditor->partylist_name = $request->partylist_name;
-        $auditor->image = basename($path);
-        $auditor->votes = 0;
-        $auditor->save();
-
-        return redirect()->route('auditors.create');
+        $validatedData = $request->validated();
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $validatedData['image'] = basename($imagePath);
+        } else {
+            return back()->withErrors(['image' => 'Image upload failed.']);
+        }
+    
+        $validatedData['votes'] = 0;
+    
+        Auditor::create($validatedData);
+    
+        return redirect()->route('auditors.create')->with('success', 'Auditor created successfully!');
     }
+    
 
     /**
      * Display the specified resource.
@@ -69,7 +66,7 @@ class AuditorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Auditor $auditor)
+    public function update(CandidateRequest $request, Auditor $auditor)
     {
         //
     }

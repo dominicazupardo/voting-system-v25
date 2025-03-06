@@ -8,5 +8,5 @@ class Treasurer extends Model
 {
     protected $table = 'treasurers';
 
-    protected $fillables = ['name', 'candidate_no', 'votes', 'partylist_name', 'image'];
+    protected $fillable = ['firstname', 'middlename', 'lastname', 'candidate_no', 'votes', 'partylist_name', 'image'];
 }

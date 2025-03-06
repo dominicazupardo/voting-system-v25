@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CandidateRequest;
 use App\Models\Treasurer;
-use Illuminate\Http\Request;
 
 class TreasurerController extends Controller
 {
@@ -28,26 +28,22 @@ class TreasurerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CandidateRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'candidate_no' => 'required|integer|min:1',
-            'partylist_name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
-
-        $path = $request->file('image')->store('images', 'public');
-
-        $treasurer = new Treasurer();
-        $treasurer->name = $request->name;
-        $treasurer->candidate_no = $request->candidate_no;
-        $treasurer->partylist_name = $request->partylist_name;
-        $treasurer->image = basename($path);
-        $treasurer->votes = 0;
-        $treasurer->save();
-
-        return redirect()->route('treasurers.create');
+        $validatedData = $request->validated();
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $validatedData['image'] = basename($imagePath);
+        } else {
+            return back()->withErrors(['image' => 'Image upload failed.']);
+        }
+    
+        $validatedData['votes'] = 0;
+    
+        Treasurer::create($validatedData);
+    
+        return redirect()->route('treasurers.create')->with('success', 'Treasurer created successfully!');
     }
 
     /**
@@ -69,7 +65,7 @@ class TreasurerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Treasurer $treasurer)
+    public function update(CandidateRequest $request, Treasurer $treasurer)
     {
         //
     }

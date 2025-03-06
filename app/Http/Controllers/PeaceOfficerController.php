@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CandidateRequest;
 use App\Models\PeaceOfficer;
-use Illuminate\Http\Request;
 
 class PeaceOfficerController extends Controller
 {
@@ -28,26 +28,22 @@ class PeaceOfficerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CandidateRequest $request)
     {
-            $validated = $request->validate([
-                'name' => 'required|string|max:255',
-                'candidate_no' => 'required|integer|min:1',
-                'partylist_name' => 'required|string|max:255',
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            ]);
-
-            $path = $request->file('image')->store('images', 'public');
-
-            $peace_officer = new PeaceOfficer();
-            $peace_officer->name = $request->name;
-            $peace_officer->candidate_no = $request->candidate_no;
-            $peace_officer->partylist_name = $request->partylist_name;
-            $peace_officer->image = basename($path);
-            $peace_officer->votes = 0;
-            $peace_officer->save();
-
-            return redirect()->route('peace_officers.create');
+        $validatedData = $request->validated();
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $validatedData['image'] = basename($imagePath);
+        } else {
+            return back()->withErrors(['image' => 'Image upload failed.']);
+        }
+    
+        $validatedData['votes'] = 0;
+    
+        PeaceOfficer::create($validatedData);
+    
+        return redirect()->route('peace_officers.create')->with('success', 'Peace Officer created successfully!');
     }
 
     /**
@@ -69,7 +65,7 @@ class PeaceOfficerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PeaceOfficer $peaceOfficer)
+    public function update(CandidateRequest $request, PeaceOfficer $peaceOfficer)
     {
         //
     }

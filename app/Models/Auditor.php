@@ -8,5 +8,5 @@ class Auditor extends Model
 {
     protected $table = 'auditors';
 
-    protected $fillables = ['name', 'candidate_no', 'votes', 'partylist_name', 'image'];
+    protected $fillable = ['firstname', 'middlename', 'lastname', 'candidate_no', 'votes', 'partylist_name', 'image'];
 }

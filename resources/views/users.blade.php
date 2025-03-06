@@ -98,7 +98,7 @@
                                             @elseif($user->has_voted == true)
                                                 <td class="px-4 py-2 text-left">Casted a vote</td>
                                             @else 
-                                                <td class="px-4 py-2 text-left">Not vote casted tet</td>
+                                                <td class="px-4 py-2 text-left">No vote casted yet</td>
                                             @endif
                                             <td class="px-4 py-2 text-left">{{ $user->created_at }}</td>
                                         </tr>

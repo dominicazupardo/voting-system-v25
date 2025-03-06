@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CandidateRequest;
 use App\Models\PIO;
-use Illuminate\Http\Request;
 
 class PIOController extends Controller
 {
@@ -28,26 +28,22 @@ class PIOController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CandidateRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'candidate_no' => 'required|integer|min:1',
-            'partylist_name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
-
-        $path = $request->file('image')->store('images', 'public');
-
-        $pio = new PIO();
-        $pio->name = $request->name;
-        $pio->candidate_no = $request->candidate_no;
-        $pio->partylist_name = $request->partylist_name;
-        $pio->image = basename($path);
-        $pio->votes = 0;
-        $pio->save();
-
-        return redirect()->route('pios.create');
+        $validatedData = $request->validated();
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $validatedData['image'] = basename($imagePath);
+        } else {
+            return back()->withErrors(['image' => 'Image upload failed.']);
+        }
+    
+        $validatedData['votes'] = 0;
+    
+        PIO::create($validatedData);
+    
+        return redirect()->route('pios.create')->with('success', 'P.I.O. created successfully!');
     }
 
     /**
@@ -69,7 +65,7 @@ class PIOController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PIO $pIO)
+    public function update(CandidateRequest $request, PIO $pIO)
     {
         //
     }
