@@ -43,7 +43,7 @@ class PresidentController extends Controller
     
         President::create($validatedData);
     
-        return redirect()->route('presidents.create')->with('success', 'President created successfully!');
+        return redirect()->route('presidents.create')->with('success', 'President candidate created successfully!');
     }
 
     /**
@@ -75,6 +75,8 @@ class PresidentController extends Controller
      */
     public function destroy(President $president)
     {
-        //
+        $president->delete();
+
+        return redirect()->route('presidents.create')->with('success', 'Candidate for president Has been deleted!');
     }
 }

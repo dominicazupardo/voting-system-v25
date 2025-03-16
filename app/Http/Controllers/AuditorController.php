@@ -43,7 +43,7 @@ class AuditorController extends Controller
     
         Auditor::create($validatedData);
     
-        return redirect()->route('auditors.create')->with('success', 'Auditor created successfully!');
+        return redirect()->route('auditors.create')->with('success', 'Auditor candidate sscreated successfully!');
     }
     
 
@@ -76,6 +76,8 @@ class AuditorController extends Controller
      */
     public function destroy(Auditor $auditor)
     {
-        //
+        $auditor->delete();
+
+        return redirect()->route('auditors.create')->with('success', 'Candidate for president Has been deleted!');
     }
 }

@@ -43,7 +43,7 @@ class PeaceOfficerController extends Controller
     
         PeaceOfficer::create($validatedData);
     
-        return redirect()->route('peace_officers.create')->with('success', 'Peace Officer created successfully!');
+        return redirect()->route('peace_officers.create')->with('success', 'Peace Officer candidate created successfully!');
     }
 
     /**
@@ -75,6 +75,8 @@ class PeaceOfficerController extends Controller
      */
     public function destroy(PeaceOfficer $peaceOfficer)
     {
-        //
+        $peaceOfficer->delete();
+
+        return redirect()->route('peace_officers.create')->with('success', 'Candidate for president Has been deleted!');
     }
 }

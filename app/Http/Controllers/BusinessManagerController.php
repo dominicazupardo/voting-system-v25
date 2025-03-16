@@ -43,7 +43,7 @@ class BusinessManagerController extends Controller
     
         BusinessManager::create($validatedData);
     
-        return redirect()->route('business_managers.create')->with('success', 'Business Manager created successfully!');
+        return redirect()->route('business_managers.create')->with('success', 'Business Manager candidate created successfully!');
     }
 
     /**
@@ -75,6 +75,8 @@ class BusinessManagerController extends Controller
      */
     public function destroy(BusinessManager $businessManager)
     {
-        //
+        $businessManager->delete();
+
+        return redirect()->route('business_managers.create')->with('success', 'Candidate for president Has been deleted!');
     }
 }

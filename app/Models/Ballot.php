@@ -8,7 +8,7 @@ class Ballot extends Model
 {
     protected $table = 'ballots';
     
-    protected $fillables = [
+    protected $fillable = [
         'president', 'vice_president', 'secretary', 
         'treasurer', 'pio', 'auditor',
         'peace_officer_1', 'peace_officer_2', 'auditor',

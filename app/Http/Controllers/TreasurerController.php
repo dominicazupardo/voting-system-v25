@@ -43,7 +43,7 @@ class TreasurerController extends Controller
     
         Treasurer::create($validatedData);
     
-        return redirect()->route('treasurers.create')->with('success', 'Treasurer created successfully!');
+        return redirect()->route('treasurers.create')->with('success', 'Treasurer candidate created successfully!');
     }
 
     /**
@@ -75,6 +75,8 @@ class TreasurerController extends Controller
      */
     public function destroy(Treasurer $treasurer)
     {
-        //
+        $treasurer->delete();
+
+        return redirect()->route('treasurers.create')->with('success', 'Candidate for president Has been deleted!');
     }
 }

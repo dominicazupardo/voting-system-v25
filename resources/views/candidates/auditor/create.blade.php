@@ -23,6 +23,7 @@
                             <th class="px-6 py-4 text-left">Name of Candidates</th>
                             <th class="px-6 py-4 text-left">Candidate ID.</th>
                             <th class="px-6 py-4 text-left">Party List</th>
+                            <th class="px-6 py-4 text-left">Action</th>
                         </tr>
                     </thead>
                     <tbody id="results-body">
@@ -31,10 +32,17 @@
                             <td class="px-6 py-4">{{ sprintf("%s %s. %s", $auditor->firstname, substr($auditor->middlename, 0, 1), $auditor->lastname) }}</td>
                             <td class="px-6 py-4">{{ sprintf("AU-%s-00%s", date('Y'), $auditor->id) }}</td>
                             <td class="px-6 py-4">{{ $auditor->partylist_name }}</td>
+                            <td class="px-6 py-4 text-left">
+                                <form action="{{ route('auditors.destroy', $auditor->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                         @empty
                         <tr class="border-b bg-white text-blue-900">
-                            <td colspan="3" class="px-6 py-4">Empty Record!</td>
+                            <td colspan="4" class="px-6 py-4">Empty Record!</td>
                         </tr>
                         @endempty
                     </tbody>

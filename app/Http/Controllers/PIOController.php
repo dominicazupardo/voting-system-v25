@@ -43,13 +43,13 @@ class PIOController extends Controller
     
         PIO::create($validatedData);
     
-        return redirect()->route('pios.create')->with('success', 'P.I.O. created successfully!');
+        return redirect()->route('pios.create')->with('success', 'P.I.O. candidate created successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(PIO $pIO)
+    public function show(PIO $pio)
     {
         //
     }
@@ -57,7 +57,7 @@ class PIOController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PIO $pIO)
+    public function edit(PIO $pio)
     {
         //
     }
@@ -65,7 +65,7 @@ class PIOController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CandidateRequest $request, PIO $pIO)
+    public function update(CandidateRequest $request, PIO $pio)
     {
         //
     }
@@ -73,8 +73,10 @@ class PIOController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PIO $pIO)
+    public function destroy(PIO $pio)
     {
-        //
+        $pio->delete();
+
+        return redirect()->route('pios.create')->with('success', 'Candidate for president Has been deleted!');
     }
 }

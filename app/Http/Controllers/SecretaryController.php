@@ -43,7 +43,7 @@ class SecretaryController extends Controller
     
         Secretary::create($validatedData);
     
-        return redirect()->route('secretaries.create')->with('success', 'Secretary created successfully!');
+        return redirect()->route('secretaries.create')->with('success', 'Secretary candidate created successfully!');
     }
 
     /**
@@ -75,6 +75,8 @@ class SecretaryController extends Controller
      */
     public function destroy(Secretary $secretary)
     {
-        //
+        $secretary->delete();
+
+        return redirect()->route('secretaries.create')->with('success', 'Candidate for president Has been deleted!');
     }
 }

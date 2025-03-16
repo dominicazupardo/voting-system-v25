@@ -29,7 +29,7 @@
                                 <!-- Name & Party List -->
                                 <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $president->firstname, substr($president->middlename, 0, 1), $president->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $president->partylist_name }}</p>
-                    
+
                                 <!-- Radio Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
@@ -372,31 +372,31 @@
                                 <p class="text-sm text-gray-600">No Candidate Found for Peace Officer 2</p>
                             @endforelse
                         </div>
-                    </div>
-                    <div class="grid grid-cols-12 mt-4">
-                        @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
-                            <button type="submit" class="bg-blue-600 text-white font-semibold py-1 px-3 rounded hover:bg-blue-700 mt-2 text-sm">
-                                Preview Your Choices
-                            </button>
-                        @elseif(Auth::user()->is_approved == false)
-                            <div class="grid grid-cols-12 mt-4">
-                                <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
-                                    <p class="text-sm text-gray-600">Please request for approval to admin to cast a vote</p>
+                        <div class="cols-12 mt-2">
+                            @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
+                                <button type="submit" class="bg-blue-600 text-white font-semibold py-1 px-3 rounded hover:bg-blue-700 mt-2 text-sm">
+                                    Preview Your Choices
+                                </button>
+                            @elseif(Auth::user()->is_approved == false)
+                                <div class="cols-12 mt-4">
+                                    <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
+                                        <p class="text-sm text-gray-600">Please request for approval to admin to cast a vote</p>
+                                    </div>
                                 </div>
-                            </div>
-                        @elseif(Auth::user()->role == 1)
-                            <div class="grid grid-cols-12 mt-4">
-                                <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
-                                    <p class="text-sm text-gray-600">Hi admin! Nice to see you!</p>
+                            @elseif(Auth::user()->role == 1)
+                                <div class="cols-12 mt-4">
+                                    <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
+                                        <p class="text-sm text-gray-600">Hi admin! Nice to see you!</p>
+                                    </div>
                                 </div>
-                            </div>
-                        @else 
-                            <div class="grid grid-cols-9 sm:grid-cols-9 md:grid-cols-9 gap-4">
-                                <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
-                                    <p class="text-sm text-gray-600">You already casted a vote! Thank you!</p>
+                            @else 
+                                <div class="cols-12 mt-4">
+                                    <div id="card" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
+                                        <p class="text-sm text-gray-600">You already casted a vote! Thank you!</p>
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
+                        </div>
                     </div>
                 </div>
             </form>

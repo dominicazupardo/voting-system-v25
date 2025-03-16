@@ -43,7 +43,7 @@ class VicePresidentController extends Controller
     
         VicePresident::create($validatedData);
     
-        return redirect()->route('vice_presidents.create')->with('success', 'Vice President created successfully!');
+        return redirect()->route('vice_presidents.create')->with('success', 'Vice President candidate created successfully!');
     }
 
     /**
@@ -75,6 +75,8 @@ class VicePresidentController extends Controller
      */
     public function destroy(VicePresident $vicePresident)
     {
-        //
+        $vicePresident->delete();
+
+        return redirect()->route('vice_presidents.create')->with('success', 'Candidate for president Has been deleted!');
     }
 }
