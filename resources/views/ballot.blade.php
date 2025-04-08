@@ -14,7 +14,7 @@
                     <div class="space-y-4">
                         <label for="president" class="block font-semibold text-lg text-gray-700">Presidents</label>
                     
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-2">
                             @forelse($presidents as $president)
                             <div id="card_{{ $loop->index }}" class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -45,12 +45,9 @@
                                 <p class="text-sm text-gray-600">No Candidate Found for President</p>
                             @endforelse
                         </div>
-                    </div>
-                    
-                    <div class="space-y-4">
                         <label for="vice_president" class="block font-semibold text-lg text-gray-700">Vice President</label>
                         
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($vice_presidents as $vice_president)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -81,13 +78,10 @@
                                 <p class="text-sm text-gray-600">No Candidate Found for Vice President</p>
                             @endforelse
                         </div>
-                    </div>
-                    
-                
-                    <div class="space-y-4">
+
                         <label for="secretary" class="block font-semibold text-lg text-gray-700">Secretary</label>
                     
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($secretaries as $secretary)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -118,13 +112,10 @@
                                 @endforelse
                             </div>
                         </div>
-                    </div>
-                    
-                
-                    <div class="space-y-4">
+
                         <label for="treasurer" class="block font-semibold text-lg text-gray-700">Treasurer</label>
                     
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($treasurers as $treasurer)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -154,13 +145,11 @@
                             @empty 
                                 <p class="text-sm text-gray-600">No Candidate Found for Treasurer</p>
                             @endforelse
-                        </div>        
-                    </div>                    
-                    
-                    <div class="space-y-4">
+                        </div>  
+
                         <label for="auditor" class="block font-semibold text-lg text-gray-700">Auditor</label>
                     
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($auditors as $auditor)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -191,13 +180,10 @@
                                 <p class="text-sm text-gray-600">No Candidate Found for Auditor</p>
                             @endforelse
                         </div>
-                    </div>                    
-                
-                    <!-- Right Column -->
-                    <div class="space-y-4">
+
                         <label for="pio" class="block font-semibold text-lg text-gray-700">P.I.O.</label>
                     
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($pios as $pio)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -228,13 +214,11 @@
                                 <p class="text-sm text-gray-600">No Candidate Found for P.I.O</p>
                             @endforelse
                         </div>
-                    </div>                    
-                
-                    <div class="space-y-4">
+
                         <!-- Business Manager 1 -->
                         <label for="business_manager_1" class="block font-semibold text-lg text-gray-700">Business Manager 1</label>
                     
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($business_managers as $business_manager)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -265,11 +249,11 @@
                                 <p class="text-sm text-gray-600">No Candidate Found for Business Manager 1</p>
                             @endforelse
                         </div>
-                    
+
                         <!-- Business Manager 2 -->
                         <label for="business_manager_2" class="block font-semibold text-lg text-gray-700">Business Manager 2</label>
                     
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($business_managers as $business_manager)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -300,13 +284,11 @@
                                 <p class="text-sm text-gray-600">No Candidate Found for Business Manager 2</p>
                             @endforelse
                         </div>
-                    </div>
-                
-                    <div class="space-y-4">
+
                         <!-- Peace Officer 1 -->
                         <label for="peace_officer_1" class="block font-semibold text-lg text-gray-700">Peace Officer 1</label>
                     
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($peace_officers as $peace_officer)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -337,11 +319,11 @@
                                 <p class="text-sm text-gray-600">No Candidate Found for Peace Officer 1</p>
                             @endforelse
                         </div>
-                    
+
                         <!-- Peace Officer 2 -->
                         <label for="peace_officer_2" class="block font-semibold text-lg text-gray-700">Peace Officer 2</label>
                     
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($peace_officers as $peace_officer)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
                                 <!-- Image -->
@@ -372,6 +354,7 @@
                                 <p class="text-sm text-gray-600">No Candidate Found for Peace Officer 2</p>
                             @endforelse
                         </div>
+
                         <div class="cols-12 mt-2">
                             @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                 <button type="submit" class="bg-blue-600 text-white font-semibold py-1 px-3 rounded hover:bg-blue-700 mt-2 text-sm">

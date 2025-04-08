@@ -387,4 +387,5 @@
         </div>
         @endif
     </div>
+    <x-footer />
 </x-app-layout>

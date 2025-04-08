@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<div class="w-64 bg-blue-900 text-white flex flex-col p-6" style="height: 2000px;">
+<div class="w-64 bg-blue-900 text-white flex flex-col p-6" style="height: 100%;">
     <a href="{{ route('dashboard') }}" class="mb-8">
         <h3 class="text-2xl font-bold">Homepage</h3>
     </a>

@@ -42,7 +42,7 @@
                         </tr>
                         @empty
                         <tr class="border-b bg-white text-blue-900">
-                            <td colspan="3" class="px-6 py-4">Empty Record!</td>
+                            <td colspan="4" class="px-6 py-4">Empty Record!</td>
                         </tr>
                         @endempty
                     </tbody>

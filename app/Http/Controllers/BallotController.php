@@ -48,7 +48,7 @@ class BallotController extends Controller
         }
 
         $ballot->secretary = $request->secretary;
-        $secretary = Secretary::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->prsecretaryesident])->get();
+        $secretary = Secretary::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->secretary])->get();
         foreach ($secretary as $secretary_data) {
             $secretary_data->votes = $secretary_data->votes + 1;
             $secretary_data->save();
