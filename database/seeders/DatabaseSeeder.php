@@ -65,7 +65,59 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
         ];
 
+        $student_data = [
+            [
+                'student_no' => '2022-12001',
+                'firstname' => 'Jane',
+                'middlename' => 'A.',
+                'lastname' => 'Smith',
+                'course' => 'BS Information Technology',
+                'year' => '3rd Year',
+                'block' => 'B',
+                'mobile_no' => '09213108253',
+                'is_approved' => true,
+                'role' => 3,
+                'email' => 'janesmitn@gmail.com',
+                'password' => Hash::make('ccdi2025^'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'student_no' => '2022-12002',
+                'firstname' => 'John',
+                'middlename' => 'M.',
+                'lastname' => 'Doe',
+                'course' => 'BS Computer Science',
+                'year' => '4th Year',
+                'block' => 'A',
+                'mobile_no' => '09213108254',
+                'is_approved' => true,
+                'role' => 3,
+                'email' => 'johndoe@gmail.com',
+                'password' => Hash::make('ccdi2025^'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'student_no' => '2022-12003',
+                'firstname' => 'Alice',
+                'middlename' => 'B.',
+                'lastname' => 'Johnson',
+                'course' => 'BS Office Administration',
+                'year' => '2nd Year',
+                'block' => 'C',
+                'mobile_no' => '09213108255',
+                'is_approved' => true,
+                'role' => 3,
+                'email' => 'alicejohnson@gmail.com',
+                'password' => Hash::make('ccdi2025^'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        ];
+
         Course::insert($course_data);
+        User::insert($student_data);
         User::insert($admin_data);
     }
 }

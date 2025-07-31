@@ -8,7 +8,7 @@
             <h1 class="text-xl font-bold mb-4">Official Ballot</h1>
             <form id="ballotForm" action="{{ route('ballot.preview') }}" method="POST">
                 @csrf
-                <div class="grid grid-cols-2 gap-6">
+                <div class="gap-6">
                     
                     <!-- Left Column -->
                     <div class="space-y-4">
@@ -107,6 +107,7 @@
                                         </label>
                                     </div>
                                 @endif
+                            </div>
                                 @empty 
                                     <p class="text-sm text-gray-600">No Candidate Found for Secretary</p>
                                 @endforelse
@@ -114,7 +115,7 @@
                         </div>
 
                         <label for="treasurer" class="block font-semibold text-lg text-gray-700">Treasurer</label>
-                    
+
                         <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                             @forelse($treasurers as $treasurer)
                             <div class="border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center bg-white">
@@ -126,12 +127,12 @@
                                 @else
                                     <p class="text-gray-500 text-sm">Image not found</p>
                                 @endif
-                    
+
                                 <!-- Name & Party List -->
                                 <p class="text-md font-semibold mt-2">{{ sprintf('%s %s. %s', $treasurer->firstname, substr($treasurer->middlename, 0, 1), $treasurer->lastname) }}</p>
                                 <p class="text-sm text-gray-600">Party List: {{ $treasurer->partylist_name }}</p>
-                    
-                                <!-- Selection Button -->
+
+                                <!-- Radio Button -->
                                 @if(Auth::user()->role == 3 && Auth::user()->has_voted == false && Auth::user()->is_approved == true)
                                     <div class="mt-3">
                                         <input type="hidden" name="treasurer_id" value="{{ $treasurer->id }}" />
@@ -145,7 +146,8 @@
                             @empty 
                                 <p class="text-sm text-gray-600">No Candidate Found for Treasurer</p>
                             @endforelse
-                        </div>  
+                        </div>
+
 
                         <label for="auditor" class="block font-semibold text-lg text-gray-700">Auditor</label>
                     
@@ -380,6 +382,7 @@
                                 </div>
                             @endif
                         </div>
+
                     </div>
                 </div>
             </form>
