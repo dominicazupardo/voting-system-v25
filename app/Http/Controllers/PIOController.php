@@ -31,18 +31,21 @@ class PIOController extends Controller
     public function store(CandidateRequest $request)
     {
         $validatedData = $request->validated();
-    
+
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
             $validatedData['image'] = basename($imagePath);
         } else {
             return back()->withErrors(['image' => 'Image upload failed.']);
         }
-    
+
         $validatedData['votes'] = 0;
-    
+
+        // Ensure type is set from the form
+        $validatedData['type'] = $request->input('type');
+
         PIO::create($validatedData);
-    
+
         return redirect()->route('pios.create')->with('success', 'P.I.O. candidate created successfully!');
     }
 

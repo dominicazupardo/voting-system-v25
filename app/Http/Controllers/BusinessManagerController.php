@@ -31,18 +31,19 @@ class BusinessManagerController extends Controller
     public function store(CandidateRequest $request)
     {
         $validatedData = $request->validated();
-    
+
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
             $validatedData['image'] = basename($imagePath);
         } else {
             return back()->withErrors(['image' => 'Image upload failed.']);
         }
-    
+
         $validatedData['votes'] = 0;
-    
+        $validatedData['type'] = $request->input('type');
+
         BusinessManager::create($validatedData);
-    
+
         return redirect()->route('business_managers.create')->with('success', 'Business Manager candidate created successfully!');
     }
 

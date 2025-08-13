@@ -41,6 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('/business_managers', BusinessManagerController::class);
     Route::resource('/users', UserController::class);
     Route::get('/users/approve/{id}', [UserController::class, 'approve'])->name('user.approve');
+
+    // Year Representative registration
+    Route::get('/representative/create', [\App\Http\Controllers\RepresentativeController::class, 'create'])->name('representative.create');
+    Route::post('/representative', [\App\Http\Controllers\RepresentativeController::class, 'store'])->name('representative.store');
+    Route::delete('/representative/{id}', [\App\Http\Controllers\RepresentativeController::class, 'destroy'])->name('representative.destroy');
 });
 
 require __DIR__.'/auth.php';

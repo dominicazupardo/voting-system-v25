@@ -32,9 +32,9 @@ class User extends Authenticatable
         'password',
     ];
 
-    protected function ballot()
+    public function ballot()
     {
-        $this->hasOne(Ballot::class);
+        return $this->hasOne(Ballot::class);
     }
 
     /**

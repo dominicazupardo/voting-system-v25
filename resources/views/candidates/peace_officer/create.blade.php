@@ -23,6 +23,7 @@
                             <th class="px-6 py-4 text-left">Name of Candidates</th>
                             <th class="px-6 py-4 text-left">Candidate ID.</th>
                             <th class="px-6 py-4 text-left">Party List</th>
+                            <th class="px-6 py-4 text-left">Type</th>
                             <th class="px-6 py-4 text-left">Action</th>
                         </tr>
                     </thead>
@@ -32,6 +33,7 @@
                             <td class="px-6 py-4">{{ sprintf("%s %s. %s", $peace_officer->firstname, substr($peace_officer->middlename, 0, 1), $peace_officer->lastname) }}</td>
                             <td class="px-6 py-4">{{ sprintf("PO-%s-00%s", date('Y'), $peace_officer->id) }}</td>
                             <td class="px-6 py-4">{{ $peace_officer->partylist_name }}</td>
+                            <td class="px-6 py-4">{{ ucfirst($peace_officer->type) }}</td>
                             <td class="px-6 py-4 text-left">
                                 <form action="{{ route('peace_officers.destroy', $peace_officer->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                     @csrf
@@ -74,6 +76,14 @@
                     <input type="text" name="partylist_name" placeholder="Party List" value="">
                 </div>
                 
+                <div>
+                    <label for="type" class="block font-semibold">Peace Officer Type</label>
+                    <select name="type" required class="border rounded px-2 py-1">
+                        <option value="">Select Type</option>
+                        <option value="internal">Internal</option>
+                        <option value="external">External</option>
+                    </select>
+                </div>
                 <div class="mt-6 space-x-4">
                     <input type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700" value="Add Candidate">
                 </div>

@@ -21,7 +21,7 @@ class CandidateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'firstname' => 'required|string|max:255',
             'middlename' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
@@ -29,5 +29,18 @@ class CandidateRequest extends FormRequest
             'partylist_name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ];
+
+        // Only require 'type' for positions that use it
+        $route = $this->route();
+        $typeRequiredRoutes = [
+            'pios.store',
+            'business_managers.store',
+            'peace_officers.store',
+        ];
+        if ($route && in_array($route->getName(), $typeRequiredRoutes)) {
+            $rules['type'] = 'required|in:internal,external';
+        }
+
+        return $rules;
     }
 }

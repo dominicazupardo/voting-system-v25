@@ -10,13 +10,14 @@ class Ballot extends Model
     
     protected $fillable = [
         'president', 'vice_president', 'secretary', 
-        'treasurer', 'pio', 'auditor',
-        'peace_officer_1', 'peace_officer_2', 'auditor',
-        'business_manager_1', 'business_manager_2'
+        'treasurer', 'pio_internal', 'pio_external', 'auditor',
+        'peace_officer_1', 'peace_officer_2',
+        'business_manager_1', 'business_manager_2',
+        'rep_1st_year', 'rep_2nd_year', 'rep_3rd_year', 'rep_4th_year'
     ];
 
-    protected function user()
+    public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

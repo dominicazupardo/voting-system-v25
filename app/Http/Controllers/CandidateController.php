@@ -31,6 +31,10 @@ class CandidateController extends Controller
             'business_manager_counts' => BusinessManager::count(),
             'auditor_counts' => Auditor::count(),
             'peace_officer_counts' => PeaceOfficer::count(),
+            'rep_1st_year_counts' => Candidate::where('year', '1st Year')->where('position', 'representative')->count(),
+            'rep_2nd_year_counts' => Candidate::where('year', '2nd Year')->where('position', 'representative')->count(),
+            'rep_3rd_year_counts' => Candidate::where('year', '3rd Year')->where('position', 'representative')->count(),
+            'rep_4th_year_counts' => Candidate::where('year', '4th Year')->where('position', 'representative')->count(),
         ]);
     }
 

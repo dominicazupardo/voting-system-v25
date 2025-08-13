@@ -23,6 +23,7 @@
                             <th class="px-6 py-4 text-left">Name of Candidates</th>
                             <th class="px-6 py-4 text-left">Candidate ID.</th>
                             <th class="px-6 py-4 text-left">Party List</th>
+                            <th class="px-6 py-4 text-left">Type</th>
                             <th class="px-6 py-4 text-left">Action</th>
                         </tr>
                     </thead>
@@ -32,6 +33,7 @@
                             <td class="px-6 py-4">{{ sprintf("%s %s. %s", $pio->firstname, substr($pio->middlename, 0, 1), $pio->lastname) }}</td>
                             <td class="px-6 py-4">{{ sprintf("PI-%s-00%s", date('Y'), $pio->id) }}</td>
                             <td class="px-6 py-4">{{ $pio->partylist_name }}</td>
+                            <td class="px-6 py-4">{{ ucfirst($pio->type) }}</td>
                             <td class="px-6 py-4 text-left">
                                 <form action="{{ route('pios.destroy', $pio->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                     @csrf
@@ -74,6 +76,14 @@
                     <input type="text" name="partylist_name" placeholder="Party List" value="">
                 </div>
 
+                <div>
+                    <label for="type" class="block font-semibold">PIO Type</label>
+                    <select name="type" required class="border rounded px-2 py-1">
+                        <option value="">Select Type</option>
+                        <option value="internal">Internal</option>
+                        <option value="external">External</option>
+                    </select>
+                </div>
                 <div class="mt-6 space-x-4">
                     <input type="submit" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700" value="Add Candidate">
                 </div>

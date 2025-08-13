@@ -31,18 +31,19 @@ class PeaceOfficerController extends Controller
     public function store(CandidateRequest $request)
     {
         $validatedData = $request->validated();
-    
+
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
             $validatedData['image'] = basename($imagePath);
         } else {
             return back()->withErrors(['image' => 'Image upload failed.']);
         }
-    
+
         $validatedData['votes'] = 0;
-    
+        $validatedData['type'] = $request->input('type');
+
         PeaceOfficer::create($validatedData);
-    
+
         return redirect()->route('peace_officers.create')->with('success', 'Peace Officer candidate created successfully!');
     }
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->integer('candidate_no');
             $table->string('partylist_name');
+            $table->enum('type', ['internal', 'external']);
             $table->integer('votes')->default(0);
             $table->timestamps();
         });

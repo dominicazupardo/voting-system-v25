@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\{
     Ballot,
@@ -28,85 +29,104 @@ class BallotController extends Controller
 
     public function cast(Request $request)
     {
-        $ballot = new Ballot();
+        // Validate input
+        $validated = $request->validate([
+            'president' => 'nullable|string',
+            'vice_president' => 'nullable|string',
+            'secretary' => 'nullable|string',
+            'treasurer' => 'nullable|string',
+            'auditor' => 'nullable|string',
+            'pio_internal' => 'nullable|string',
+            'pio_external' => 'nullable|string',
+            'business_manager_internal' => 'nullable|string',
+            'business_manager_external' => 'nullable|string',
+            'peace_officer_internal' => 'nullable|string',
+            'peace_officer_external' => 'nullable|string',
+            'rep_1st_year' => 'nullable|string',
+            'rep_2nd_year' => 'nullable|string',
+            'rep_3rd_year' => 'nullable|string',
+            'rep_4th_year' => 'nullable|string',
+        ]);
 
-        $president_data = "";
-        $vice_president_data = "";
+    DB::transaction(function () use ($request) {
+            $ballot = new Ballot();
+            // Assign ballot fields
+            $ballot->president = $request->president;
+            $ballot->vice_president = $request->vice_president;
+            $ballot->secretary = $request->secretary;
+            $ballot->treasurer = $request->treasurer;
+            $ballot->auditor = $request->auditor;
+            $ballot->pio_internal = $request->pio_internal;
+            $ballot->pio_external = $request->pio_external;
+            $ballot->business_manager_internal = $request->business_manager_internal;
+            $ballot->business_manager_external = $request->business_manager_external;
+            $ballot->peace_officer_internal = $request->peace_officer_internal;
+            $ballot->peace_officer_external = $request->peace_officer_external;
+            $ballot->rep_1st_year = $request->rep_1st_year;
+            $ballot->rep_2nd_year = $request->rep_2nd_year;
+            $ballot->rep_3rd_year = $request->rep_3rd_year;
+            $ballot->rep_4th_year = $request->rep_4th_year;
+            $ballot->user_id = Auth::user()->id;
+            $ballot->save();
 
-        $ballot->president = $request->president;
-        $president = President::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->president])->get();
-        foreach ($president as $president_data) { 
-            $president_data->votes = $president_data->votes + 1; 
-            $president_data->save();
-        }
-            
-        $ballot->vice_president = $request->vice_president;
-        $vice_president = VicePresident::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->vice_president])->get();
-        foreach ($vice_president as $vice_president_data) {
-             $vice_president_data->votes = $vice_president_data->votes + 1; 
-             $vice_president_data->save();
-        }
+            // Increment votes for each selected candidate (null-safe)
+            $positions = [
+                'president' => President::class,
+                'vice_president' => VicePresident::class,
+                'secretary' => Secretary::class,
+                'treasurer' => Treasurer::class,
+                'auditor' => Auditor::class,
+            ];
+            foreach ($positions as $field => $model) {
+                if ($request->$field) {
+                    $candidates = $model::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->$field])->get();
+                    foreach ($candidates as $candidate) {
+                        $candidate->votes = $candidate->votes + 1;
+                        $candidate->save();
+                    }
+                }
+            }
 
-        $ballot->secretary = $request->secretary;
-        $secretary = Secretary::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->secretary])->get();
-        foreach ($secretary as $secretary_data) {
-            $secretary_data->votes = $secretary_data->votes + 1;
-            $secretary_data->save();
-        }
+            // Internal/External positions
+            $internalExternal = [
+                'pio_internal' => [PIO::class, 'internal'],
+                'pio_external' => [PIO::class, 'external'],
+                'business_manager_internal' => [BusinessManager::class, 'internal'],
+                'business_manager_external' => [BusinessManager::class, 'external'],
+                'peace_officer_internal' => [PeaceOfficer::class, 'internal'],
+                'peace_officer_external' => [PeaceOfficer::class, 'external'],
+            ];
+            foreach ($internalExternal as $field => [$model, $type]) {
+                if ($request->$field) {
+                    $candidates = $model::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ? AND type = ?", [$request->$field, $type])->get();
+                    foreach ($candidates as $candidate) {
+                        $candidate->votes = $candidate->votes + 1;
+                        $candidate->save();
+                    }
+                }
+            }
 
-        $ballot->treasurer = $request->treasurer;
-        $treasurer = Treasurer::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->treasurer])->get();
-        foreach ($treasurer as $treasurer_data) {
-            $treasurer_data->votes = $treasurer_data->votes + 1;
-            $treasurer_data->save();
-        }
+            // 1st-4th Year Representatives
+            foreach ([
+                'rep_1st_year' => '1st Year',
+                'rep_2nd_year' => '2nd Year',
+                'rep_3rd_year' => '3rd Year',
+                'rep_4th_year' => '4th Year',
+            ] as $field => $year) {
+                if ($request->$field) {
+                    $rep = \App\Models\Candidate::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ? AND year = ?", [$request->$field, $year])->first();
+                    if ($rep) {
+                        $rep->votes = ($rep->votes ?? 0) + 1;
+                        $rep->save();
+                    }
+                }
+            }
 
-        $ballot->auditor = $request->auditor;
-        $auditor = Auditor::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->auditor])->get();
-        foreach ($auditor as $auditor_data) {
-            $auditor_data->votes = $auditor_data->votes + 1;
-            $auditor_data->save();
-        }
-
-        $ballot->pio = $request->pio;
-        $pio = PIO::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->pio])->get();
-        foreach ($pio as $pio_data) {
-            $pio_data->votes = $pio_data->votes + 1;
-            $pio_data->save();
-        }
-
-        $ballot->peace_officer_1 = $request->peace_officer_1;
-        $peace_officer_1 = PeaceOfficer::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->peace_officer_1])->get();
-        foreach ($peace_officer_1 as $peace_officer_data_1) {
-            $peace_officer_data_1->votes = $peace_officer_data_1->votes + 1;
-            $peace_officer_data_1->save();
-        }
-
-        $ballot->peace_officer_2 = $request->peace_officer_2;
-        $peace_officer_2 = PeaceOfficer::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->peace_officer_2])->get();
-        foreach ($peace_officer_2 as $peace_officer_data_2) {
-            $peace_officer_data_2->votes = $peace_officer_data_2->votes + 1;
-            $peace_officer_data_2->save();
-        }
-
-        $ballot->business_manager_1 = $request->business_manager_1;
-        $business_manager_1 = BusinessManager::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->business_manager_1])->get();
-        foreach ($business_manager_1 as $business_manager_data_1) {
-            $business_manager_data_1->votes = $business_manager_data_1->votes + 1;
-            $business_manager_data_1->save();
-        }
-
-        $ballot->business_manager_2  = $request->business_manager_2;
-        $business_manager_2 = BusinessManager::whereRaw("CONCAT(firstname, ' ', LEFT(middlename, 1), '. ', lastname) = ?", [$request->business_manager_2])->get();
-        foreach ($business_manager_2 as $business_manager_data_2) {
-            $business_manager_data_2->votes = $business_manager_data_2->votes + 1;
-            $business_manager_data_2->save();
-        }
-
-        $ballot->user_id = Auth::user()->id;
-        $ballot->save();
-        Auth::user()->has_voted = true;
-        Auth::user()->save();
+            // Mark user as voted
+            $user = User::find(Auth::id());
+            $user->has_voted = true;
+            $user->save();
+        });
 
         return redirect()->route('ballots.results');
     }
@@ -121,10 +141,17 @@ class BallotController extends Controller
             'vice_presidents' => VicePresident::all(),
             'secretaries' => Secretary::all(),
             'treasurers' => Treasurer::all(),
-            'pios' => PIO::all(),
-            'business_managers' => BusinessManager::all(),
+            'pios_internal' => PIO::where('type', 'internal')->get(),
+            'pios_external' => PIO::where('type', 'external')->get(),
+            'business_managers_internal' => BusinessManager::where('type', 'internal')->get(),
+            'business_managers_external' => BusinessManager::where('type', 'external')->get(),
             'auditors' => Auditor::all(),
-            'peace_officers' => PeaceOfficer::all(),
+            'peace_officers_internal' => PeaceOfficer::where('type', 'internal')->get(),
+            'peace_officers_external' => PeaceOfficer::where('type', 'external')->get(),
+            'rep_1st_year' => \App\Models\Candidate::where('year', '1st Year')->where('position', 'representative')->get(),
+            'rep_2nd_year' => \App\Models\Candidate::where('year', '2nd Year')->where('position', 'representative')->get(),
+            'rep_3rd_year' => \App\Models\Candidate::where('year', '3rd Year')->where('position', 'representative')->get(),
+            'rep_4th_year' => \App\Models\Candidate::where('year', '4th Year')->where('position', 'representative')->get(),
         ]);
     }
 
@@ -139,6 +166,10 @@ class BallotController extends Controller
             'business_managers' => BusinessManager::orderBy('votes', 'desc')->get(),
             'auditors' => Auditor::orderBy('votes', 'desc')->get(),
             'peace_officers' => PeaceOfficer::orderBy('votes', 'desc')->get(),
+            'rep_1st_year' => \App\Models\Candidate::where('year', '1st Year')->where('position', 'representative')->orderBy('votes', 'desc')->get(),
+            'rep_2nd_year' => \App\Models\Candidate::where('year', '2nd Year')->where('position', 'representative')->orderBy('votes', 'desc')->get(),
+            'rep_3rd_year' => \App\Models\Candidate::where('year', '3rd Year')->where('position', 'representative')->orderBy('votes', 'desc')->get(),
+            'rep_4th_year' => \App\Models\Candidate::where('year', '4th Year')->where('position', 'representative')->orderBy('votes', 'desc')->get(),
         ]);
     }
 

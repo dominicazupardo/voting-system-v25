@@ -85,7 +85,7 @@ class DatabaseSeeder extends Seeder
 
         // Generate 100 students with incrementing details
         $student_data = [];
-        $password = Hash::make('ccdi2025^');
+        $password = Hash::make('ccdi2025');
         $courses = [
             'BS Computer Science',
             'BS Information Technology',
@@ -96,9 +96,9 @@ class DatabaseSeeder extends Seeder
         ];
         $years = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
         $blocks = ['A', 'B', 'C'];
-        for ($i = 1; $i <= 100; $i++) {
+        for ($i = 1; $i <= 120; $i++) {
             $student_data[] = [
-                'student_no' => '2022-1' . str_pad($i, 4, '0', STR_PAD_LEFT),
+                'student_no' => '2025-1' . str_pad($i, 4, '0', STR_PAD_LEFT),
                 'firstname' => 'Student ' . $i,
                 'middlename' => 'Ccdi',
                 'lastname' => 'Ccdi',
